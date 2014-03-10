@@ -14,6 +14,32 @@ import moduleOPENGL.Jouer.TexturedVBO;
 
 public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAffichage 
 {
+	
+	
+//	@Override
+//	public void setRaquette(int choixRaquette) {
+//		if (choixRaquette==1){
+//			variable1 = "paddle5.png";
+//			System.out.println("hey hey");
+//		}
+//		if (choixRaquette==2) variable1 = "paddle5.png";
+//		if (choixRaquette==3) variable1 = "paddle5.png";
+//		if (choixRaquette==4) variable1 = "paddle5.png";
+//	}
+//
+//	@Override
+//	public void setDeco(int choixDeco) {
+//		if (choixDeco==1){
+//			variable2 = "mer4.png"; 
+//			System.out.println("hey hey");
+//		}
+//		if (choixDeco==2) variable2 = "mer4.png";
+//		if (choixDeco==3) variable2 = "mer4.png";
+//		if (choixDeco==4) variable2 = "mer4.png";
+//		
+//	}
+	
+	
     // The textures
     Texture ballTex, paddleTex, paddle2Tex;
 
@@ -24,7 +50,15 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
     GObject paddle1, paddle2, ball;
 
     String variable1;
-    String variable2;
+    String variable2 ;
+    
+    //a enlever zeynab
+    public Pong(){
+    	super();
+    }
+    public void pong(){
+    	pong();
+    }
 	
     public void init()
     {
@@ -41,32 +75,25 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
         glEnable(GL_TEXTURE_2D);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-//        @Override
-//    	public void setRaquette(int choixRaquette) {
-//    		// TODO Auto-generated method stub
-//        	if (choixRaquette==1) variable1 = "src/ImagesGUI/raquetteSport";// u gotta  update this I don't know your path
-//    		if (choixRaquette==2) variable1 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==3) variable1 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==4) variable1 = "src/ImagesGUI/raquetteSport";
-//    	}
-//
-//    	@Override
-//    	public void setDeco(int choixDeco) {
-//    		// TODO Auto-generated method stub
-//    		if (choixRaquette==1) variable2 = "src/ImagesGUI/raquetteSport"; // u gotta update this too
-//    		if (choixRaquette==2) variable2 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==3) variable2 = "src/ImagesGUI/raquetteSport";
-//    		if (choixRaquette==4) variable2 = "src/ImagesGUI/raquetteSport";
-//    	}
+   
 
-        
-
-    	
     	
     	// Load textures
+
+
         ballTex = Texture.loadTexture("ball.png");
-        paddleTex = Texture.loadTexture("variable1.png");
-        paddle2Tex = Texture.loadTexture("paddle2.png");
+        paddleTex = Texture.loadTexture("paddle4.png");
+        paddle2Tex = Texture.loadTexture("paddle5.png");
+        
+//      ballTex = Texture.loadTexture("ball.png");
+//      paddleTex = Texture.loadTexture("variable1.png");
+//      paddle2Tex = Texture.loadTexture("paddle5.png");
+        
+        //a enlever zeynab
+//        String name="ball.png";
+//        ballTex = Texture.loadTexture(name);
+//        paddleTex = Texture.loadTexture(name);
+//        paddle2Tex = Texture.loadTexture(name);
   
         
         // Create VBOs
@@ -75,14 +102,18 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
         paddle2VBO = TexturedVBO.loadTexturedVBO(paddle2Tex);
 
         // Load background and create resized background VBO
-        Texture backTex = Texture.loadTexture("variable2.png");
+        
+        //a enlever zeynab
+//        Texture backTex = Texture.loadTexture(variable2);
+        Texture backTex = Texture.loadTexture("background.png");
+        
         backTex.width = 800;
         backTex.height = 600;
         backgroundVBO = TexturedVBO.loadTexturedVBO(backTex);
 
         // Create objects
-        paddle2 = new GObject(paddle2VBO, (800 - 128) / 2, 10);
-        paddle1 = new GObject(paddle1VBO, (800 - 128) / 2, 600 - 16 - 10);
+        paddle2 = new GObject(paddle2VBO, (800 - 400) / 2, 10);
+        paddle1 = new GObject(paddle1VBO, (800 - 400) / 2, 600 - 16 - 10);
         ball = new GObject(ballVBO, (800 - 16) / 2, (600 - 16) / 2);
 
         // Set ball velocities
@@ -106,10 +137,10 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
         paddle1.dx = 0;
 
         if (isKeyDown(KEY_LEFT))
-            paddle1.dx = -4;
+            paddle1.dx = -10;
 
         if (isKeyDown(KEY_RIGHT))
-            paddle1.dx = 4;
+            paddle1.dx = 10;
 
         // Bounce ball when it hits paddles
         if (ball.bounds.intersects(paddle1.bounds) || ball.bounds.intersects(paddle2.bounds))
@@ -125,11 +156,11 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
         paddle2.move();
 
         // Fix paddle2 from moving outside window
-        paddle2.x = Math.min(paddle2.x, 800 - 128);
+        paddle2.x = Math.min(paddle2.x, 800 - 400);
         paddle2.x = Math.max(paddle2.x, 0);
 
         // Fix paddle1 from moving outside window
-        paddle1.x = Math.min(paddle1.x, 800 - 128);
+        paddle1.x = Math.min(paddle1.x, 800 - 400);
         paddle1.x = Math.max(paddle1.x, 0);
 
         // Reset ball if moved out
@@ -179,24 +210,7 @@ public class Pong extends Game implements moduleIntegration.SetRaquetteDecoGuiAf
         new Pong();
     }
 
-	@Override
-	public void setRaquette(int choixRaquette) {
-		// TODO Auto-generated method stub
-		if (choixRaquette==1) variable1 = "paddle.png";// u gotta  update this I don't know your path
-		if (choixRaquette==2) variable1 = "src/ImagesGUI/raquetteSport";
-		if (choixRaquette==3) variable1 = "src/ImagesGUI/raquetteSport";
-		if (choixRaquette==4) variable1 = "src/ImagesGUI/raquetteSport";
-	}
-
-	@Override
-	public void setDeco(int choixDeco) {
-		// TODO Auto-generated method stub
-		if (choixDeco==1) variable2 = "backgroung.png"; // u gotta update this too
-		if (choixDeco==2) variable2 = "src/ImagesGUI/raquetteSport";
-		if (choixDeco==3) variable2 = "src/ImagesGUI/raquetteSport";
-		if (choixDeco==4) variable2 = "src/ImagesGUI/raquetteSport";
-		
-	}
+	
 
 	
     

@@ -1,5 +1,6 @@
 package moduleDESCRIPTEUR;
 import java.util.Random;
+
 import moduleClassif.*;
 
 
@@ -8,17 +9,14 @@ public class DescDEMO{
 		super();
 	}
 	
-	public void descripteur(){
+	public void descripteur() throws InterruptedException{
 		
-//		Scanner sc = new Scanner(System.in);
-//
-//		System.out.println("Veuillez sélectionner le nombre d'électrodes :");
-//		int n = sc.nextInt();
+
 		int[] feature = new int[10];
 
 		Random r = new Random();
-
-		for (int i = 1; i <= 10; i++) {
+		while(true){
+			for (int i = 1; i <= 10; i++) {
 				float x;
 				x = r.nextFloat();
 
@@ -28,9 +26,10 @@ public class DescDEMO{
 					feature[i - 1] = 1;
 				}
 //				System.out.println(descripteur[i-1]);	
+			}
+			ClassifDEMO classifieur = new ClassifDEMO();
+			classifieur.giveMatrix(feature);
+			Thread.sleep(3000);
 		}
-		ClassifDEMO classifieur = new ClassifDEMO();
-		classifieur.giveMatrix(feature);
 	}
-
 }

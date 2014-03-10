@@ -9,6 +9,7 @@ public class MainTestIG {
 		// TODO Auto-generated method stub
 		FenetreAffichage menu = new FenetreAffichage(); 
 		menu.show();
+		//menu.ecran.init();
 	}
 
 }

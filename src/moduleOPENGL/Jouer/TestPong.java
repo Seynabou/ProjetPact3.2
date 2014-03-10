@@ -4,7 +4,6 @@ package moduleOPENGL.Jouer;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.input.Keyboard.*;
-
 import org.lwjgl.opengl.Display;
 
 
@@ -18,10 +17,11 @@ public class TestPong extends Game
 
     // Objects
     GObject paddle1, paddle2, ball;
+    
 
     public void init()
     {
-        Display.setTitle("PACT:Pong");
+        Display.setTitle("MENTAL PONG");
 
         // Initialize OpenGL
         glMatrixMode(GL_PROJECTION);
@@ -37,8 +37,8 @@ public class TestPong extends Game
 
         // Load textures
        ballTex = Texture.loadTexture("ball.png");
-        paddleTex = Texture.loadTexture("paddle.png");
-        paddle2Tex = Texture.loadTexture("paddle2.png");
+        paddleTex = Texture.loadTexture("paddle4.png");
+        paddle2Tex = Texture.loadTexture("paddle5.png");
   
         // Create VBOs
         ballVBO = TexturedVBO.loadTexturedVBO(ballTex);
@@ -46,14 +46,14 @@ public class TestPong extends Game
         paddle2VBO = TexturedVBO.loadTexturedVBO(paddle2Tex);
 
         // Load background and create resized background VBO
-        Texture backTex = Texture.loadTexture("background.png");
+        Texture backTex = Texture.loadTexture("vue.png");
         backTex.width = 800;
         backTex.height = 600;
         backgroundVBO = TexturedVBO.loadTexturedVBO(backTex);
 
         // Create objects
-        paddle2 = new GObject(paddle2VBO, (800 - 128) / 2, 10);
-        paddle1 = new GObject(paddle1VBO, (800 - 128) / 2, 600 - 16 - 10);
+        paddle2 = new GObject(paddle2VBO, (800 - 400) / 2, 10);
+        paddle1 = new GObject(paddle1VBO, (800 - 400) / 2, 600 - 16 - 10);
         ball = new GObject(ballVBO, (800 - 16) / 2, (600 - 16) / 2);
 
         // Set ball velocities
@@ -77,10 +77,10 @@ public class TestPong extends Game
         paddle1.dx = 0;
 
         if (isKeyDown(KEY_LEFT))
-            paddle1.dx = -4;
+            paddle1.dx = -10;
 
         if (isKeyDown(KEY_RIGHT))
-            paddle1.dx = 4;
+            paddle1.dx = 10;
 
         // Bounce ball when it hits paddles
         if (ball.bounds.intersects(paddle1.bounds) || ball.bounds.intersects(paddle2.bounds))
@@ -96,11 +96,11 @@ public class TestPong extends Game
         paddle2.move();
 
         // Fix paddle2 from moving outside window
-        paddle2.x = Math.min(paddle2.x, 800 - 128);
+        paddle2.x = Math.min(paddle2.x, 800 - 400);
         paddle2.x = Math.max(paddle2.x, 0);
 
         // Fix paddle1 from moving outside window
-        paddle1.x = Math.min(paddle1.x, 800 - 128);
+        paddle1.x = Math.min(paddle1.x, 800 - 400);
         paddle1.x = Math.max(paddle1.x, 0);
 
         // Reset ball if moved out
@@ -148,6 +148,7 @@ public class TestPong extends Game
     public static void main(String[] args)
     {
         new TestPong();
+        
     }
 
 }
