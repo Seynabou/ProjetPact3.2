@@ -2,8 +2,20 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/ZEYNAB/workspace/ProjetPACT-master-2/src/moduleOPENGL/lwjgl-2.9.1/jar/lwjgl.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ZEYNAB/workspace/ProjetPACT-master-2/src/moduleOPENGL/lwjgl-2.9.1/jar/lwjgl_util.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ZEYNAB/workspace/ProjetPACT-master-2/src/moduleOPENGL/lwjgl-2.9.1/slick.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/ZEYNAB/workspace/ProjetPACT-master-2/src/moduleOPENGL/lwjgl-2.9.1/jar/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/ZEYNAB/Desktop/lwjgl-2.9.1/native/windows"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/ZEYNAB/workspace/ProjetPACT-master-2/src/moduleOPENGL/lwjgl-2.9.1/jar/lwjgl_util.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/ZEYNAB/Desktop/lwjgl-2.9.1/native/windows"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/ZEYNAB/workspace/ProjetPACT-master-2/src/moduleOPENGL/lwjgl-2.9.1/slick.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/ZEYNAB/Desktop/lwjgl-2.9.1/native/windows"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
