@@ -1,5 +1,8 @@
 package moduleIG;
 
+
+import Jeu.Manitou;
+
 public class MainTestIG {
 
 	/**
@@ -7,9 +10,8 @@ public class MainTestIG {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		FenetreAffichage menu = new FenetreAffichage(); 
+		Manitou manitou= new Manitou();
+		FenetreAffichage menu = new FenetreAffichage(manitou); 
 		menu.show();
-		//menu.ecran.init();
 	}
-
 }
