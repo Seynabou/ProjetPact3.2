@@ -8,3 +8,4 @@ public interface SetRaquetteDecoGuiAffichage {
 	void setDeco(int choixDeco);
 
 }
+

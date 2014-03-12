@@ -25,6 +25,7 @@ public class TableDePingPong  implements DecorInterface{
 				b.setAngleTheta(theta-Math.PI/2);
 				
 			}
+			
 			else
 			{
 				double theta = b.getAngleTheta();

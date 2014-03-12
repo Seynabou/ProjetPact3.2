@@ -14,6 +14,7 @@ import moduleOPENGL.Jouer.TexturedVBO;
 //{
 public class Pong extends Game 
 {
+	
 	// The textures
 	Texture ballTex, paddleTex, paddle2Tex;
 

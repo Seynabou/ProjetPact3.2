@@ -12,6 +12,7 @@ public class Vector implements VectorInterface {
 		labels = labels0 ;
 		coord = coord0 ;
 	
+		
 	}
 	@Override
 	public int[] getLabels(){

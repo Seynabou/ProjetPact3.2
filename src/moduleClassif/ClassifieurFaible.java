@@ -16,6 +16,7 @@ public class ClassifieurFaible {
 															// colonnes
 	private double[] weight; // représente les poids en entree
 	double[] errorI;
+	
 
 	public ClassifieurFaible(double[] weight, double[][] matrixOfFeatures,
 			int[] labels) {

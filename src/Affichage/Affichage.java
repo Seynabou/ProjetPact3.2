@@ -7,7 +7,6 @@ import Jeu.Balle;
 import Jeu.Manitou;
 import moduleIntegration.SetRaquetteDecoGuiAffichage;
 
-
 // cette classe contient des methodes qui vont etre appelees par GUI pour lui donner le décor et la raquette choisis 
 
 

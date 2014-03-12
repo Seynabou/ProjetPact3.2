@@ -23,7 +23,6 @@ IGControleurInterface{
 	private boolean pause;
 
 
-
 	public void mettreEnPause_Reprendre(){
 		this.pause= !pause;
 		System.out.println("Je mets le jeu en pause");

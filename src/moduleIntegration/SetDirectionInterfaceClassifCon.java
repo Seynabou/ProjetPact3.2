@@ -12,3 +12,4 @@ public interface SetDirectionInterfaceClassifCon {
 	void setDirectionP2(int direction);
 	
 }
+

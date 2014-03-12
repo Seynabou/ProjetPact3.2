@@ -17,6 +17,7 @@ public class MouvementRaquettes implements Runnable {
 		this.j2=directionP2;
 	}
 
+
 	public void run(){
 
 

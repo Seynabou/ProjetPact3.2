@@ -8,6 +8,7 @@ public class Balle extends Tools implements BalleInterface{
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	private int radius;
 	@Override
 	public boolean staysInTheField(RaquetteInterface r) {

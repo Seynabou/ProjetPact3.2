@@ -2,6 +2,7 @@ package Testeurs;
 
 import Jeu.Manitou;
 
+
 public class MainTest {
 
 	/**

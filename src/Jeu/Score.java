@@ -16,6 +16,7 @@ public class Score implements ScoreInterface{
 		return this.tableau[0];
 	}
 
+	
 	@Override
 	public int getP2Score() {
 		// TODO Auto-generated method stub

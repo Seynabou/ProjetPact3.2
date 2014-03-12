@@ -9,3 +9,4 @@ public interface GetPositionOfRaquetteBalleAffichageCon {
 	Raquette getRaquetteP1();
 	Raquette getRaquetteP2();
 }
+

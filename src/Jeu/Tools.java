@@ -25,6 +25,7 @@ public class Tools implements MovingObject {
 	}
 
 	@Override
+	
 	public double getY() {
 		// TODO Auto-generated method stub
 		return this.y;

@@ -15,3 +15,4 @@ public interface IGControleurInterface {
 	void lancerJeu() throws InterruptedException;
 
 }
+

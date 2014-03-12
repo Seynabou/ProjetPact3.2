@@ -33,6 +33,7 @@ class Descripteur
 			//System.out.println(ligne);
 			if(ligne.equalsIgnoreCase(direction1)) {
 				for(int i=0;i<10;i++){
+			
 					feature[i]=1;
 				}
 				//System.out.println("right");

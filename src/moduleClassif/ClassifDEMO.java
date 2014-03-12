@@ -24,6 +24,7 @@ public class ClassifDEMO implements DescripteurClassificationInterface {
                 super();
         }
 
+        
         @Override
         public void giveMatrix(int[] matrix) {
                 this.matrice = matrix;

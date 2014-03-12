@@ -1,6 +1,5 @@
 package moduleOPENGL.Jouer;
 
-
 import java.awt.Rectangle;
 
 public class GObject

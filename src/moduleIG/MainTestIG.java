@@ -1,6 +1,5 @@
 package moduleIG;
 
-
 import Jeu.Manitou;
 
 public class MainTestIG {

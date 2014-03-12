@@ -16,7 +16,6 @@ public class MouvementBalle implements Runnable {
 	int speed;
 	boolean balleStaysInTheField;
 
-
 	public MouvementBalle(BalleInterface balle, DecorInterface decor, RaquetteInterface raquetteP1, RaquetteInterface raquetteP2, ScoreInterface score){
 		this.balle=(Balle) balle;
 		this.decor=decor;

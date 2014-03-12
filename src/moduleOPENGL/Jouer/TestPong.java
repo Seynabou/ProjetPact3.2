@@ -1,7 +1,6 @@
 package moduleOPENGL.Jouer;
 
 
-
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.input.Keyboard.*;
 import org.lwjgl.opengl.Display;

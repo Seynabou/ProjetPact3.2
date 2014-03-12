@@ -10,7 +10,6 @@ import org.lwjgl.BufferUtils;
 
 import static org.lwjgl.opengl.GL11.*;
 
-
 public class Texture
 {
   

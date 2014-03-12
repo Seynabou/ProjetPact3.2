@@ -6,3 +6,4 @@ public interface RecepteurDesDirectionsInterface {
 	public int setDirection(int direction);
 	
 }
+

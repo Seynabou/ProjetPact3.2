@@ -1,6 +1,5 @@
 package moduleOPENGL.Jouer;
 
-
 import java.nio.FloatBuffer;
 
 import static org.lwjgl.opengl.GL11.*;

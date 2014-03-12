@@ -9,3 +9,4 @@ public boolean getBalleStaysInTheField();
 public void setBalleStaysInTheField(boolean position);
 
 }
+
