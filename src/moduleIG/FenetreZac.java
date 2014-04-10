@@ -8,6 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -40,7 +41,7 @@ public class FenetreZac {
 		
 		jouer.addMouseListener(new MouseAdapter(){
 			public void MouseClicked(MouseEvent e){
-				
+			System.out.println("On joue!");	
 			}
 		});
 		panneauPrinc.add(jouer);
@@ -54,7 +55,7 @@ public class FenetreZac {
 		JButton aide = new JButton("Aide");
 		aide.addMouseListener(new MouseAdapter(){
 			public void MouseClicked(MouseEvent e){
-				
+				JOptionPane.showMessageDialog(fenetre, "Vous avez ouvert la fenetre d'aide.");
 			}
 		});
 		panneauPrinc.add(aide);
