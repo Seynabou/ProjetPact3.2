@@ -19,7 +19,7 @@ public class FenetreConfig {
 	}
 
 	public void getReady() {
-		panneauPrinc.setLayout(new GridLayout(3,2,1 1));
+		panneauPrinc.setLayout(new GridLayout(3,2,1, 1));
 		PanneauDecor decor = new PanneauDecor(donnees);
 		PanneauRaquette raquette = new PanneauRaquette(donnees);
 		PanneauDifficulte difficulte = new PanneauDifficulte(donnees);
