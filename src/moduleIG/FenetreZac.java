@@ -20,7 +20,6 @@ public class FenetreZac {
 	private JPanel panneauConfig=new JPanel();
 	private JPanel panneauAide= new JPanel();
 	public void show(){
-		this.addComponentsToPanePrinc(panneauPrinc);
 		this.fenetre.pack();
 		this.fenetre.setLocationRelativeTo(null);
 		this.fenetre.setVisible(true);
@@ -33,41 +32,9 @@ public class FenetreZac {
 		this.fenetre=new JFrame("Menu principal");
 		this.panneauPrinc=(JPanel) fenetre.getContentPane();
 	}
-	public void addComponentsToPanePrinc(JPanel panneau){
 
+	public void traiterDonnees(ConfigData donnes){
+		
 	}
-	public void addComponentsToPaneConfig(JPanel panneau){
-		panneau.setLayout(new BoxLayout(panneau, 0));
-		ButtonGroup sectionDifficulte= new ButtonGroup();
-		JRadioButton boutonFacile= new JRadioButton("Facile");
-		boutonFacile.setMnemonic(KeyEvent.VK_F);
-		boutonFacile.addMouseListener(new MouseAdapter(){
-			manitou.setSpeed(1);
-		});
-		sectionDifficulte.add(boutonFacile);
-		panneau.add(boutonFacile);
-		JRadioButton boutonIntermediaire= new JRadioButton("Intermediaire");
-		boutonIntermediaire.setMnemonic(KeyEvent.VK_I);
-		boutonIntermediaire.addMouseListener(new MouseAdapter(){
-			manitou.setSpeed(2);
-		});
-
-		sectionDifficulte.add(boutonIntermediaire);
-		panneau.add(boutonIntermediaire);
-		JRadioButton boutonExpert= new JRadioButton("Expert");
-		boutonExpert.setMnemonic(KeyEvent.VK_E);
-		boutonExpert.addMouseListener(new MouseAdapter(){
-			manitou.setSpeed(3);
-		});
-
-		sectionDifficulte.add(boutonExpert);
-		panneau.add(boutonExpert);
-
-		ButtonGroup sectionDecor= new ButtonGroup();
-		ButtonGroup sectionRaquette = new ButtonGroup();
-
-	}
-	public void addComponentsToPaneAide(JPanel panneau){
-
-	}
+	
 }
