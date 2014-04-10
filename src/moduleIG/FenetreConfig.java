@@ -18,6 +18,9 @@ public class FenetreConfig {
 		this.fenetre.setVisible(true);
 	}
 
+	public FenetreConfig(FenetreZac fenetrePrinc){
+		this.fenetrePrinc=fenetrePrinc;
+	}
 	public void getReady() {
 		panneauPrinc.setLayout(new GridLayout(3,2,1, 1));
 		PanneauDecor decor = new PanneauDecor(donnees);
