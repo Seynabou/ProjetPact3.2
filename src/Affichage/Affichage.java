@@ -1,50 +1,283 @@
 package Affichage;
 
+
+
+import org.lwjgl.*;
+import org.lwjgl.input.Keyboard;
+import static org.lwjgl.opengl.GL11.*;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import java.nio.FloatBuffer;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.util.glu.GLU;
+import org.lwjgl.util.glu.Sphere;
 import Jeu.Balle;
+import Jeu.DecorInterface;
 import Jeu.Manitou;
+import Jeu.Raquette;
+import Jeu.TableDePingPong;
 import moduleIntegration.SetRaquetteDecoGuiAffichage;
+import Affichage.Texture;
+import Affichage.TexturedVBO;
 
 // cette classe contient des methodes qui vont etre appelees par GUI pour lui donner le décor et la raquette choisis 
 
 
+@SuppressWarnings("unused")
 public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
-	private String chemin = "data\\ReproductionEXEC" ;
+	private String chemin = "data\\ReproductionEXEC";
 	private String message = "";
+	private String variable1, variable2;
 	GregorianCalendar calendar = new GregorianCalendar();
 	Date time  = calendar.getTime();
+	public static final int WIDTH=640, HEIGHT=480;
+	private boolean isRunning=true;
+	private long lastFrame;
+	
+	private DecorInterface decor=new TableDePingPong(10,6,0);
+	private int speed=1;
+	private double alea=Math.random()*Math.PI*2;
+	
+	private float zTranslation = -12f;
+	private static final DisplayMode DISPLAY_MODE = new DisplayMode(WIDTH, HEIGHT);
+	//----------- Variables added for Lighting Test -----------//
+	private FloatBuffer matSpecular;
+	private FloatBuffer lightPosition;
+	private FloatBuffer whiteLight; 
+	private FloatBuffer lModelAmbient;
+	
+	 // The textures
+    Texture raquette1Tex, raquette2Tex;
+
+    // The VBOs
+    TexturedVBO raquette1VBO, raquette2VBO, arriereplanVBO;
+
+    // Objects
+    Raquette raquette1, raquette2;
+    Balle balle;
+  
+	
 	//message = message+"matrice du descripteur envoyée à Classif  " + time;
 	
 	//creer un constructeur permettant de créer un écran d'affichage (il est utilisé par ex dans la classe fenetre
 	//pour appeler ses methodes setDeco et setRaquette
 	
-	public Affichage(){
-		super();
-	}
 
-	public void setRaquette(int choixRaquette) {
-		// TODO Auto-generated method stub	
+	public Affichage(Manitou manitou){
+
+		setDisplay();
+		initGL();
+	
+		//setTimer();
 		
+		while(isRunning){
+			
+			render();
+			Display.update();
+		
+			if(Display.isCloseRequested()){
+				
+				isRunning=false;
+			}
+			
+		}
+		
+		Display.destroy();
+	 }
+	
+	
+	//Gestion de l'Affichage
+	  
+	  private void setDisplay() {
+		
+	   try{
+		 
+	 
+		Display.setDisplayMode(new DisplayMode(WIDTH,HEIGHT));
+		Display.setTitle("Pong");
+		Display.create();
+		
+	      }catch (LWJGLException e){
+		 
+		    e.printStackTrace();
+	      }
+	 
+	 }
+	  
+	  // Initialisation
+	   private void initGL() {
+		
+		glMatrixMode(GL_PROJECTION);
+		glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
+		glLoadIdentity();
+		glViewport(0, 0, Display.getWidth(), Display.getHeight());
+		glOrtho(0,640,480,0,1,-1);
+		glClearColor(0.5f, 0.5f, 0.5f, 0.0f); // fenêtre de couleur grise
+		glClearDepth(1.0f); // efface le buffer pour la vue en profondeur
+		glEnable(GL_DEPTH_TEST); // Active le test de profondeur
+		glDepthFunc(GL_LEQUAL); //définit le type de test à utiliser pour le test de profondeur
+		
+		
+		float fovy = 45.0f;
+		float aspect = DISPLAY_MODE.getWidth() / (float)DISPLAY_MODE.getHeight();
+		float zNear = 0.1f;
+		float zFar = 100.0f;
+		GLU.gluPerspective(fovy, aspect, zNear, zFar);
+		
+		glMatrixMode(GL_MODELVIEW);
+		
+		//choisit la qualité de couleur/texture la plus correcte
+		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); 
+		
+		
+       // Variables et méthodes pour l'éclairage
+		
+		initLightArrays();
+		glShadeModel(GL_SMOOTH);
+		// définit une couleur de matière réfléchissante
+		glMaterial(GL_FRONT, GL_SPECULAR, matSpecular);	
+		
+		// définit la brillance
+		glMaterialf(GL_FRONT, GL_SHININESS, 50.0f);					
+		// définit la position de la lumière
+		glLight(GL_LIGHT0, GL_POSITION, lightPosition);	
+		// met la lumière réfléchissante en blanc
+		glLight(GL_LIGHT0, GL_SPECULAR, whiteLight);
+		// met la lumière diffuse en blanc
+		glLight(GL_LIGHT0, GL_DIFFUSE, whiteLight);		
+		// lumière ambiante globale
+		glLightModel(GL_LIGHT_MODEL_AMBIENT, lModelAmbient);	
+		// active l'éclairage
+		glEnable(GL_LIGHTING);	
+		// active la lumière n°1
+		glEnable(GL_LIGHT0);										
+		// permet à OpenGL d'utiliser glColor3f pour définir la couleur 
+		glEnable(GL_COLOR_MATERIAL);		
+		// définir les propriétés ambiantes et diffuses des fronts de polygones 
+		glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);			
+
+
+		// Chargement des textures
+		
+		raquette1Tex = Texture.loadTexture(variable2);
+		raquette2Tex = Texture.loadTexture(variable2);
+
+
+		// Creation des VBOs
+	
+		raquette1VBO = TexturedVBO.loadTexturedVBO(raquette1Tex);
+		raquette2VBO = TexturedVBO.loadTexturedVBO(raquette2Tex);
+
+		//Chargement del'arriere-plan et redimensionnement du VBO
+		
+		Texture arriereplan = Texture.loadTexture(variable1);
+		arriereplan.width = 800;
+		arriereplan.height = 600;
+		arriereplanVBO = TexturedVBO.loadTexturedVBO(arriereplan);
+
+		// Creation des objets raquettes et balle
+		
+		raquette2 = new Raquette(raquette2VBO, -decor.getX()/2,0,0,speed,5);
+		raquette1 = new Raquette(raquette1VBO,  decor.getX()/2,0,0,speed,5);
+	
+
+		
+	  }
+	   
+	 //------- Ajouté pour le test d'éclairage----------//
+		private void initLightArrays() {
+			
+			matSpecular = BufferUtils.createFloatBuffer(4);
+			matSpecular.put(1.0f).put(1.0f).put(1.0f).put(1.0f).flip();
+			
+			lightPosition = BufferUtils.createFloatBuffer(4);
+			lightPosition.put(1.0f).put(1.0f).put(1.0f).put(0.0f).flip();
+			
+			whiteLight = BufferUtils.createFloatBuffer(4);
+			whiteLight.put(1.0f).put(1.0f).put(1.0f).put(1.0f).flip();
+			
+			lModelAmbient = BufferUtils.createFloatBuffer(4);
+			lModelAmbient.put(0.5f).put(0.5f).put(0.5f).put(1.0f).flip();
+			
+		}
+
 		//là il doit prendre la raquette choisie et l'adapter dans l'ecran
 		
-	}
+	  public void setRaquette(int choixRaquette) {
+		// TODO Auto-generated method stub	
+		
+		
+		  
+		  if (choixRaquette==1) variable2 = "src/ImagesGUI/raquetteSport"; 
+		  if (choixRaquette==2) variable2 = "src/ImagesGUI/banane";
+		  if (choixRaquette==3) variable2 = "src/ImagesGUI/raquetteSport";
+		  if (choixRaquette==4) variable2 = "src/ImagesGUI/banane";
+		
+	 }
+	  // Le rendu à ma fenêtre de jeu
+	  
+	  private void render() {
+		
+	     
+	      glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+			glLoadIdentity(); 
+			
+			glTranslatef(0.0f, 0.0f, zTranslation);
+			
+			glColor3f(1.0f, 0.0f, 1.0f);
+			Sphere balle = new Sphere();
+			balle.draw(0.2f, 20, 16);
+	   
+			//  render de l'arriere-plan
+			
+			arriereplanVBO.render(0, 0);
 
-	public void setDeco(int choixDeco) {
+			//  render de la raquette
+		
+			raquette1.render();
+			raquette2.render();
+	    }
+
+	 public void setDeco(int choixDeco) {
 		// TODO Auto-generated method stub
 		
 		//là il doit prendre l'image du déco et le mettre dans l'ecran
-		//après il affiche l'ecran et le jeu commence 
-	}
+		
+	 	if (choixDeco==1) variable1 = "src/ImagesGUI/ocean";
+		if (choixDeco==2) variable1 = "src/ImagesGUI/jungle";
+		if (choixDeco==3) variable1 = "src/ImagesGUI/newYork";
+		if (choixDeco==4) variable1 = "src/ImagesGUI/pelouse";
+		
+	
+	 }
+	
+	//après il affiche l'ecran et le jeu commence 
+	 
+	 	public static void main(String[] args){
+	 	
+		  Manitou manitou = new Manitou();
+		  new Affichage(manitou);
+	
+	 	}
 
-	public void afficher(){
-		Manitou manitou = new Manitou();
-		Balle balle = manitou.getBalle();
-		System.out.println(balle.getX()+"  "+balle.getY()+"  "+balle.getZ()+"  ");
-		manitou.getRaquetteP1();
-		System.out.println("j'ai reçu la raquette");
-	}
+	 	// Affichage à la console de la position de la balle et l'etat de la raquette 
+	
+	 	public void afficher(){
+	 		
+		  Manitou manitou = new Manitou();
+		  Balle balle = manitou.getBalle();
+		  System.out.println(balle.getX()+"  "+balle.getY()+"  "+balle.getZ()+"  ");
+		  manitou.getRaquetteP1();
+		  System.out.println("j'ai reçu la raquette");
+	
+	 	
+	 	}
+	
+
 	
 }

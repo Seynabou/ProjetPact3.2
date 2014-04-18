@@ -1,10 +1,15 @@
 package Jeu;
 
+
 public class Balle extends Tools implements BalleInterface{
 
+
+    
 	public Balle(double x, double y, double z, double theta,double phi, int v,int radius) {
 		super(x, y, z, theta,phi, v);
 		this.radius=radius;
+		
+	  
 		// TODO Auto-generated constructor stub
 	}
 

@@ -1,9 +1,15 @@
 package Jeu;
 
+
+
 public class Tools implements MovingObject {
 
-	private double x;
-	private double y;
+	
+	protected double x;
+	protected double y;
+	
+	 // The VBO of this object
+    
 	public Tools(double x, double y, double z, double theta,double phi, int v) {
 		super();
 		this.x = x;
@@ -13,11 +19,12 @@ public class Tools implements MovingObject {
 		this.v = v;
 		this.phi=phi;
 	}
+	
 
-	private double z;
-	private double theta;
-	private double phi;
-	private int v;
+	protected double z;
+	protected double theta;
+	protected double phi;
+	protected int v;
 	@Override
 	public double getX() {
 		// TODO Auto-generated method stub
@@ -108,6 +115,7 @@ public class Tools implements MovingObject {
 		// TODO Auto-generated method stub
 		this.phi=phi;
 	}
+	
 
 	@Override
 	public void reInitialize() {
