@@ -13,15 +13,14 @@ IGControleurInterface{
 		// TODO Auto-generated constructor stub
 	}
 	
-	TexturedVBO vbo;
 	private DecorInterface decor=new TableDePingPong(10,6,0);
 	private int speed=1;
 	private int directionP1;
 	private int directionP2;
 	private double alea=Math.random()*Math.PI*2;
-	private Balle balle = new Balle(1,0,0,0,alea,speed,1);
-	private Raquette raquetteP1=new Raquette(vbo, -decor.getX()/2,0,0,speed,5);
-	private Raquette raquetteP2=new Raquette(vbo, decor.getX()/2,0,0,speed,5);
+	private Balle balle = new Balle(150,0,0,0,alea,speed,1);
+	private Raquette raquetteP1=new Raquette( (float) (-decor.getX()/2-150),0,0,speed,5);
+	private Raquette raquetteP2=new Raquette((float) (decor.getX()/2)+250,0,0,speed,5);
 	private Score score=new Score(0,0);
 	private MouvementBalle laBalle;
 	private MouvementRaquettes lesRaquettes;

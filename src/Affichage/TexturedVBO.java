@@ -72,13 +72,14 @@ public class TexturedVBO
     }
     
    
-    public void render(float x, float y)
+    public void render_vbo(double x, double y,double z)
     {
         glPushMatrix();
         {
             // Translate to location
-            glTranslatef(x, y, 0);
+            glTranslated(x, y, z);
             
+            glEnable(GL_TEXTURE_2D);
             // Bind the texture
             glBindTexture(GL_TEXTURE_2D, texture.id);
 
@@ -100,10 +101,39 @@ public class TexturedVBO
             // Disable client states
             glDisableClientState(GL_VERTEX_ARRAY);
             glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+            glDisable(GL_TEXTURE_2D);
         }
         glPopMatrix();
     }
     
+    public void render(double x, double y,double z)
+    {
+        glPushMatrix();
+        {
+            // Translate to location
+            glTranslated(x+200, y+200, z);
+            
+            glEnable(GL_TEXTURE_2D);
+            // Bind the texture
+            glBindTexture(GL_TEXTURE_2D, texture.id);
+
+            // Bind the texture coords buffer
+            glBegin(GL_QUADS);
+            glVertex2i(-texture.width/2, -texture.height/2);
+            glTexCoord2f(0, 0);
+            glVertex2i(-texture.width/2, texture.height/2);
+            glTexCoord2f(1, 0);
+            glVertex2i(texture.width/2, texture.height/2);
+            glTexCoord2f(1, 1);
+            glVertex2i(texture.width/2, -texture.height/2);
+            glTexCoord2f(0, 1);
+            glEnd();
+            
+            glDisable(GL_TEXTURE_2D);
+
+        }
+        glPopMatrix();
+    }
    
     public void dispose()
     {

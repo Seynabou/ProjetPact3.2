@@ -36,7 +36,7 @@ public class Texture
         BufferedImage bimg = null;
         try
         {
-        	bimg = ImageIO.read(Texture.class.getClassLoader().getResourceAsStream(name));
+        	bimg = ImageIO.read(Texture.class.getClassLoader().getResourceAsStream( name));
         }
         catch (IOException e)
         {

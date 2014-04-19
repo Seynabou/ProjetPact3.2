@@ -32,7 +32,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 	private String chemin = "data\\ReproductionEXEC";
 	private String message = "";
-	private String variable1, variable2;
+	private String nom_texture_deco="", nom_texture_raquette="",nom_texture_balle="ball.png";
 	GregorianCalendar calendar = new GregorianCalendar();
 	Date time  = calendar.getTime();
 	public static final int WIDTH=640, HEIGHT=480;
@@ -43,7 +43,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	private int speed=1;
 	private double alea=Math.random()*Math.PI*2;
 	
-	private float zTranslation = -12f;
+	private float zTranslation = -2f;
 	private static final DisplayMode DISPLAY_MODE = new DisplayMode(WIDTH, HEIGHT);
 	//----------- Variables added for Lighting Test -----------//
 	private FloatBuffer matSpecular;
@@ -52,25 +52,25 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	private FloatBuffer lModelAmbient;
 	
 	 // The textures
-    Texture raquette1Tex, raquette2Tex;
+    Texture balleTex, raquette1Tex, raquette2Tex;
 
     // The VBOs
-    TexturedVBO raquette1VBO, raquette2VBO, arriereplanVBO;
+    TexturedVBO balleVBO, raquette1VBO, raquette2VBO, arriereplanVBO;
 
-    // Objects
-    Raquette raquette1, raquette2;
-    Balle balle;
-  
-	
+    // Gestionnaire  
+    Manitou manitou;
 	//message = message+"matrice du descripteur envoyée à Classif  " + time;
 	
 	//creer un constructeur permettant de créer un écran d'affichage (il est utilisé par ex dans la classe fenetre
 	//pour appeler ses methodes setDeco et setRaquette
 	
 
-	public Affichage(Manitou manitou){
+	public Affichage(Manitou le_manitou){
 
+	    manitou = le_manitou;
 		setDisplay();
+		setRaquette(1);
+		setDeco(1);
 		initGL();
 	
 		//setTimer();
@@ -119,14 +119,14 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		glOrtho(0,640,480,0,1,-1);
 		glClearColor(0.5f, 0.5f, 0.5f, 0.0f); // fenêtre de couleur grise
 		glClearDepth(1.0f); // efface le buffer pour la vue en profondeur
-		glEnable(GL_DEPTH_TEST); // Active le test de profondeur
+		glDisable(GL_DEPTH_TEST); // Active le test de profondeur
 		glDepthFunc(GL_LEQUAL); //définit le type de test à utiliser pour le test de profondeur
 		
 		
 		float fovy = 45.0f;
 		float aspect = DISPLAY_MODE.getWidth() / (float)DISPLAY_MODE.getHeight();
 		float zNear = 0.1f;
-		float zFar = 100.0f;
+		float zFar = 200.0f;
 		GLU.gluPerspective(fovy, aspect, zNear, zFar);
 		
 		glMatrixMode(GL_MODELVIEW);
@@ -164,27 +164,23 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 
 		// Chargement des textures
 		
-		raquette1Tex = Texture.loadTexture(variable2);
-		raquette2Tex = Texture.loadTexture(variable2);
-
+		
+		raquette1Tex = Texture.loadTexture(nom_texture_raquette);
+		raquette2Tex = Texture.loadTexture(nom_texture_raquette);
+		balleTex = Texture.loadTexture(nom_texture_balle);
 
 		// Creation des VBOs
 	
 		raquette1VBO = TexturedVBO.loadTexturedVBO(raquette1Tex);
 		raquette2VBO = TexturedVBO.loadTexturedVBO(raquette2Tex);
-
+		balleVBO = TexturedVBO.loadTexturedVBO(balleTex);
 		//Chargement del'arriere-plan et redimensionnement du VBO
 		
-		Texture arriereplan = Texture.loadTexture(variable1);
-		arriereplan.width = 800;
-		arriereplan.height = 600;
+		Texture arriereplan = Texture.loadTexture(nom_texture_deco);
 		arriereplanVBO = TexturedVBO.loadTexturedVBO(arriereplan);
+		arriereplan.width = 800;
+		arriereplan.height =600;
 
-		// Creation des objets raquettes et balle
-		
-		raquette2 = new Raquette(raquette2VBO, -decor.getX()/2,0,0,speed,5);
-		raquette1 = new Raquette(raquette1VBO,  decor.getX()/2,0,0,speed,5);
-	
 
 		
 	  }
@@ -212,11 +208,11 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		// TODO Auto-generated method stub	
 		
 		
-		  
-		  if (choixRaquette==1) variable2 = "src/ImagesGUI/raquetteSport"; 
-		  if (choixRaquette==2) variable2 = "src/ImagesGUI/banane";
-		  if (choixRaquette==3) variable2 = "src/ImagesGUI/raquetteSport";
-		  if (choixRaquette==4) variable2 = "src/ImagesGUI/banane";
+		 // nom_texture_raquette = "C:/Users/FATIMATA/workspace/PACT3.2/src/ImagesGUI/";
+		  if (choixRaquette==1) nom_texture_raquette = "raquetteSport.jpg"; 
+		  if (choixRaquette==2) nom_texture_raquette = "banane.jpg";
+		  if (choixRaquette==3) nom_texture_raquette = "raquetteSport.jpg";
+		  if (choixRaquette==4) nom_texture_raquette = "banane.jpg";
 		
 	 }
 	  // Le rendu à ma fenêtre de jeu
@@ -226,32 +222,37 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	     
 	      glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 			glLoadIdentity(); 
-			
 			glTranslatef(0.0f, 0.0f, zTranslation);
-			
-			glColor3f(1.0f, 0.0f, 1.0f);
-			Sphere balle = new Sphere();
-			balle.draw(0.2f, 20, 16);
-	   
+		
 			//  render de l'arriere-plan
 			
-			arriereplanVBO.render(0, 0);
+			arriereplanVBO.render(100,100, 0);
 
 			//  render de la raquette
 		
-			raquette1.render();
-			raquette2.render();
-	    }
+			raquette1VBO.render(manitou.getRaquetteP1().getX(), manitou.getRaquetteP1().getY(), manitou.getRaquetteP1().getZ());
+			raquette2VBO.render(manitou.getRaquetteP2().getX()+200, manitou.getRaquetteP2().getY(), manitou.getRaquetteP2().getZ());
+	  
+	        balleVBO.render(manitou.getBalle().getX(), manitou.getBalle().getY(), manitou.getBalle().getZ());
+			
+			
+		//	glColor3f(1.0f, 0.0f, 1.0f);
+		//	Sphere balle = new Sphere();
+		//	balle.draw(0.2f, 20, 16);
+	   
+	  
+	  
+	  }
 
 	 public void setDeco(int choixDeco) {
 		// TODO Auto-generated method stub
 		
 		//là il doit prendre l'image du déco et le mettre dans l'ecran
 		
-	 	if (choixDeco==1) variable1 = "src/ImagesGUI/ocean";
-		if (choixDeco==2) variable1 = "src/ImagesGUI/jungle";
-		if (choixDeco==3) variable1 = "src/ImagesGUI/newYork";
-		if (choixDeco==4) variable1 = "src/ImagesGUI/pelouse";
+	 	if (choixDeco==1) nom_texture_deco = "ocean.jpg";
+		if (choixDeco==2) nom_texture_deco = "jungle.jpg";
+		if (choixDeco==3) nom_texture_deco = "newYork.jpg";
+		if (choixDeco==4) nom_texture_deco = "pelouse.jpg";
 		
 	
 	 }
