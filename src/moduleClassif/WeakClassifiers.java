@@ -4,9 +4,9 @@ public class WeakClassifiers {
 
 	int rows =20;  //probleme de disposition des colonnes/lignes
 	int columns = 2;
-	double[][] MatrixOfFeatures = new double[columns+1][rows+1]; //+1
+	double[][] MatrixOfFeatures = new double[columns+1][rows+1]; //+1 ou pas
 	int[] labels = new int[rows+1];
-	int[] newLabels = new int[rows+1]; //-1 ou 1 on va convertir des clarinettes et autres
+	int[] newLabels = new int[rows+1]; 
 	double[] weight;
 	double[] errorFeatures = new double[rows+1];
 	double[] errorThreshold = new double[rows+1];
@@ -22,7 +22,7 @@ public class WeakClassifiers {
 		this.weight = weight;
 	}
 
-	public void Classifiers() { //changer le retour après pour predict
+	public void Classifiers() { //changer le retour après pour predict: modelh[i]
 
 		//for each feature
 		for(int p = 0; p<=columns;p++){ //voir si <= ou < seulement
