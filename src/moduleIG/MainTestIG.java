@@ -15,8 +15,8 @@ public class MainTestIG {
 		// TODO Auto-generated method stub
 		Manitou manitou= new Manitou();
 		
-		Pong pong = new Pong();
-		FenetreZac window = new FenetreZac(manitou, pong);
+		//Pong pong = new Pong();
+		FenetreZac window = new FenetreZac(manitou);
 		window.show();
 //		Interface2 menu = new Interface2(manitou); 
 //		menu.show();

@@ -15,19 +15,21 @@ public class PanneauDecor {
 
 	private JPanel panneau = new JPanel();
 	private ConfigData donnees;
-	private PanneauDecorImage panneauImage= new PanneauDecorImage();
+	private PanneauDecorImage panneauImage;
 	private ButtonGroup section = new ButtonGroup();
 
-	public PanneauDecor (ConfigData donnees) {
+	public PanneauDecor (ConfigData donnees, PanneauDecorImage panneauImage) {
 		this.donnees=donnees;
 		this.getReady();
+		this.panneauImage=panneauImage;
 	}
 
 	private void getReady() {
 		panneau.setLayout(new FlowLayout());
 		JRadioButton boutonDecor1 = new JRadioButton("Decor 1");
 		boutonDecor1.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
+				
 				donnees.decor = 1;
 				panneauImage.actualize(1);
 			}
@@ -36,7 +38,7 @@ public class PanneauDecor {
 		panneau.add(boutonDecor1);
 		JRadioButton boutonDecor2 = new JRadioButton("Decor 2");
 		boutonDecor2.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				donnees.decor = 2;
 				panneauImage.actualize(2);
 			}
@@ -45,14 +47,15 @@ public class PanneauDecor {
 		panneau.add(boutonDecor2);
 		JRadioButton boutonDecor3 = new JRadioButton("Decor 3");
 		boutonDecor3.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				donnees.decor = 3;
 				panneauImage.actualize(3);
 			}
 		});
 		section.add(boutonDecor3);
 		panneau.add(boutonDecor3);
-		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 5, true),"Decor"));
+		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 1, true),"Decor"));
+		boutonDecor1.doClick();
 
 	}
 

@@ -1,6 +1,6 @@
 package moduleIG;
 
-import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -8,23 +8,25 @@ import javax.swing.JPanel;
 
 public class PanneauDecorImage {
 
-	private JPanel panneau;
+	private JPanel panneau=new JPanel();
+	private JLabel image= new JLabel();
 	public JPanel getPanneau() {
+		this.getReady();
 		return this.panneau;
 	}
 
 	public void actualize(int choix){
+		
 		switch(choix){
-		case 1 : JLabel image1 = new JLabel( new ImageIcon( "jungle.jpg"));
-		panneau.setLayout(new BorderLayout());
-		panneau.add(image1);
-		case 2 : JLabel image2 = new JLabel( new ImageIcon( "newYork.jpg"));
-		panneau.setLayout(new BorderLayout());
-		panneau.add(image2);
-		case 3 : JLabel image3 = new JLabel( new ImageIcon( "ocean.jpg"));
-		panneau.setLayout(new BorderLayout());
-		panneau.add(image3);
+		case 1 : image.setIcon(new ImageIcon("src/ImagesGUI/jungle.jpg"));break;
+		case 2 : image.setIcon(new ImageIcon("src/ImagesGUI/newYork.jpg"));break;
+		case 3 : image.setIcon(new ImageIcon("src/ImagesGUI/ocean.jpg"));break;
 		}
 
+	}
+	
+	private void getReady(){
+		panneau.setLayout(new FlowLayout());
+		panneau.add(image);
 	}
 }

@@ -10,13 +10,11 @@ import javax.swing.JPanel;
 
 public class PanneauValidation {
 
-	private JPanel panneau;
+	private JPanel panneau=new JPanel();
 	private ConfigData donnees;
-	private FenetreZac fenetrePrinc;
 	private FenetreConfig fenetreConfig;
 	
-	public PanneauValidation(FenetreZac fenetrePrinc, ConfigData donnees, FenetreConfig fenetreConfig){
-		this.fenetrePrinc=fenetrePrinc;
+	public PanneauValidation(ConfigData donnees, FenetreConfig fenetreConfig){
 		this.donnees=donnees;
 		this.fenetreConfig=fenetreConfig;
 		this.getReady();
@@ -26,21 +24,21 @@ public class PanneauValidation {
 		panneau.setLayout(new FlowLayout());
 		JButton valider = new JButton("OK");
 		valider.addMouseListener(new MouseAdapter(){
-			public void MouseClicked(MouseEvent e){
-				fenetrePrinc.traiterDonnees(donnes);
-				fenetreConfig.getFenetre().setVisible(false);
+			public void mouseClicked(MouseEvent e){
+				fenetreConfig.traiterDonnees(donnees);
 			}
 		});
 		valider.setBackground(Color.green);
 		panneau.add(valider);
 		JButton annuler = new JButton("Annuler");
 		annuler.addMouseListener(new MouseAdapter(){
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				fenetreConfig.getFenetre().setVisible(false);
 			}
 		});
-		panneau.add(annuler);
+		
 		annuler.setBackground(Color.red);
+		panneau.add(annuler);
 	}
 
 	public JPanel getPanneau() {

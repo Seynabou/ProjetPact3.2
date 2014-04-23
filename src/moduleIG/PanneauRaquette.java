@@ -14,42 +14,48 @@ import javax.swing.border.TitledBorder;
 public class PanneauRaquette {
 
 	private JPanel panneau = new JPanel();
-	private PanneauRaquetteImage panneauImage = new PanneauRaquetteImage();
+	private PanneauRaquetteImage panneauImage;
 	private ConfigData donnees;
 	private ButtonGroup section = new ButtonGroup();
 
-	public PanneauRaquette (ConfigData donnees) {
+	public PanneauRaquette (ConfigData donnees,PanneauRaquetteImage panneauImage) {
 		this.donnees=donnees;
+		this.panneauImage=panneauImage;
 		this.getReady();
+		
 	}
 
 	private void getReady() {
 		panneau.setLayout(new FlowLayout());
 		JRadioButton boutonRaquette1 = new JRadioButton("Raquette 1");
 		boutonRaquette1.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				donnees.raquette = 1;
+				panneauImage.actualize(1);
 			}
 		});
 		section.add(boutonRaquette1);
 		panneau.add(boutonRaquette1);
 		JRadioButton boutonRaquette2 = new JRadioButton("Raquette 2");
 		boutonRaquette2.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				donnees.raquette = 2;
+				panneauImage.actualize(2);
 			}
 		});
 		section.add(boutonRaquette2);
 		panneau.add(boutonRaquette2);
 		JRadioButton boutonRaquette3 = new JRadioButton("Raquette 3");
 		boutonRaquette3.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
+			public void mouseClicked(MouseEvent e){
 				donnees.raquette = 3;
+				panneauImage.actualize(3);
 			}
 		});
 		section.add(boutonRaquette3);
 		panneau.add(boutonRaquette3);
-		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 5, true),"Raquette"));
+		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 1, true),"Raquette"));
+		boutonRaquette3.doClick();
 
 	}
 

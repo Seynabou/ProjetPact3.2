@@ -26,29 +26,29 @@ public class PanneauDifficulte {
 		panneau.setLayout(new FlowLayout());
 		JRadioButton boutonFacile = new JRadioButton("Facile");
 		boutonFacile.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
-				this.donnees.difficulte = 1;
+			public void mouseClicked(MouseEvent e){
+				donnees.difficulte = 1;
 			}
 		});
 		section.add(boutonFacile);
 		panneau.add(boutonFacile);
 		JRadioButton boutonIntermediaire = new JRadioButton("Intermediaire");
 		boutonIntermediaire.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
-				this.donnees.difficulte = 2;
+			public void mouseClicked(MouseEvent e){
+				donnees.difficulte = 2;
 			}
 		});
 		section.add(boutonIntermediaire);
 		panneau.add(boutonIntermediaire);
 		JRadioButton boutonExpert = new JRadioButton("Expert");
 		boutonExpert.addMouseListener(new MouseAdapter() {
-			public void MouseClicked(MouseEvent e){
-				this.donnees.difficulte = 3;
+			public void mouseClicked(MouseEvent e){
+				donnees.difficulte = 3;
 			}
 		});
 		section.add(boutonExpert);
 		panneau.add(boutonExpert);
-		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 5, true),"Difficulte"));
+		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 1, true),"Difficulte"));
 
 	}
 
