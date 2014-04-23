@@ -5,6 +5,9 @@ import Jeu.Manitou;
 
 public class MainTestIG {
 
+	public MainTestIG() {
+		
+	}
 	/**
 	 * @param args
 	 */
