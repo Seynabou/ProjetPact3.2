@@ -20,8 +20,9 @@ public class PanneauDecor {
 
 	public PanneauDecor (ConfigData donnees, PanneauDecorImage panneauImage) {
 		this.donnees=donnees;
-		this.getReady();
+		
 		this.panneauImage=panneauImage;
+		this.getReady();
 	}
 
 	private void getReady() {
@@ -56,6 +57,7 @@ public class PanneauDecor {
 		panneau.add(boutonDecor3);
 		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 1, true),"Decor"));
 		boutonDecor1.doClick();
+		panneauImage.actualize(1);
 
 	}
 

@@ -1,6 +1,6 @@
 package Jeu;
+import moduleIG.ConfigData;
 import moduleIntegration.*;
-import Affichage.TexturedVBO;
 
 
 //Modif par rapport au vbo
@@ -11,6 +11,10 @@ IGControleurInterface{
 	public Manitou() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void traiterDonnees(ConfigData donnees){
+		this.speed=donnees.difficulte;
 	}
 	
 	private DecorInterface decor=new TableDePingPong(10,6,0);

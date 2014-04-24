@@ -49,6 +49,7 @@ public class PanneauDifficulte {
 		section.add(boutonExpert);
 		panneau.add(boutonExpert);
 		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 1, true),"Difficulte"));
+		boutonFacile.doClick();
 
 	}
 

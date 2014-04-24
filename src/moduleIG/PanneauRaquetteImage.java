@@ -16,7 +16,7 @@ public class PanneauRaquetteImage {
 	}
 
 	public void actualize(int choix){
-		System.out.println("J'utilise cette méthode");
+		
 		switch(choix){
 		case 1 : image.setIcon(new ImageIcon("src/ImagesGUI/banane.jpg"));break;
 		case 2 : image.setIcon(new ImageIcon("src/ImagesGUI/raquetteSport.jpg"));break;

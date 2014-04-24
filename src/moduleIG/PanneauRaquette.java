@@ -55,7 +55,8 @@ public class PanneauRaquette {
 		section.add(boutonRaquette3);
 		panneau.add(boutonRaquette3);
 		panneau.setBorder(new TitledBorder(new LineBorder(Color.black, 1, true),"Raquette"));
-		boutonRaquette3.doClick();
+		boutonRaquette1.doClick();
+		panneauImage.actualize(1);
 
 	}
 

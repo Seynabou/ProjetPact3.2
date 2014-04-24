@@ -1,9 +1,10 @@
 package moduleIG;
 
+import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -13,7 +14,7 @@ import Jeu.Manitou;
 
 public class FenetreZac {
 
-	private  JFrame fenetre=new JFrame("Menu Principal");
+	private  JFrame fenetre=new JFrame("Menu Principal- MENTAL PONG");
 	private Manitou manitou;
 	private  JPanel panneauPrinc=(JPanel) this.fenetre.getContentPane();
 	private FenetreConfig configurations = new FenetreConfig(this);
@@ -33,7 +34,7 @@ public class FenetreZac {
 	}
 
 	private void getReady(){
-		panneauPrinc.setLayout(new BoxLayout(panneauPrinc, BoxLayout.Y_AXIS));
+		panneauPrinc.setLayout(new FlowLayout());
 		JButton jouer = new JButton("Jouer");
 
 		jouer.addMouseListener(new MouseAdapter(){
@@ -41,6 +42,7 @@ public class FenetreZac {
 				System.out.println("On joue!");	
 			}
 		});
+		jouer.setIcon(new ImageIcon("src/ImagesGUI/play.png"));
 		panneauPrinc.add(jouer);
 		JButton config = new JButton("Configurer");
 		config.addMouseListener(new MouseAdapter(){
@@ -48,17 +50,21 @@ public class FenetreZac {
 				configurations.show();
 			}
 		});
+		config.setIcon(new ImageIcon("src/ImagesGUI/settings.png"));
 		panneauPrinc.add(config);
 		JButton aide = new JButton("Aide");
 		aide.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				JOptionPane.showMessageDialog(fenetre, "Vous avez ouvert la fenetre d'aide.");
+				JOptionPane.showMessageDialog(fenetre, "Vous avez ouvert la fenetre d'aide.","Aide", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
+		aide.setIcon(new ImageIcon("src/ImagesGUI/help.png"));
 		panneauPrinc.add(aide);
 	}
 
-	public void traiterDonnees(ConfigData donnes){
+	public void traiterDonnees(ConfigData donnees){
+		System.out.println(donnees.toString());
+		manitou.traiterDonnees(donnees);
 
 	}
 
