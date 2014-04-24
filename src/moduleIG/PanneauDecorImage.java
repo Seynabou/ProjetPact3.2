@@ -18,9 +18,9 @@ public class PanneauDecorImage {
 	public void actualize(int choix){
 		
 		switch(choix){
-		case 1 : image.setIcon(new ImageIcon("src/ImagesGUI/jungle.jpg"));break;
-		case 2 : image.setIcon(new ImageIcon("src/ImagesGUI/newYork.jpg"));break;
-		case 3 : image.setIcon(new ImageIcon("src/ImagesGUI/ocean.jpg"));break;
+		case 1 : image.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/jungle.jpg")));break;
+		case 2 : image.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/newYork.jpg")));break;
+		case 3 : image.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/ocean.jpg")));break;
 		}
 
 	}

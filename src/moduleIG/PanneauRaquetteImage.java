@@ -18,9 +18,9 @@ public class PanneauRaquetteImage {
 	public void actualize(int choix){
 		
 		switch(choix){
-		case 1 : image.setIcon(new ImageIcon("src/ImagesGUI/banane.jpg"));break;
-		case 2 : image.setIcon(new ImageIcon("src/ImagesGUI/raquetteSport.jpg"));break;
-		case 3 : image.setIcon(new ImageIcon("src/ImagesGUI/requin.jpg"));break;
+		case 1 : image.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/banane.jpg")));break;
+		case 2 : image.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/raquetteSport.jpg")));break;
+		case 3 : image.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/requin.jpg")));break;
 		}
 
 	}

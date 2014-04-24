@@ -1,6 +1,6 @@
 package moduleIG;
 
-import moduleOPENGL.Jouer.Pong;
+import Affichage.Affichage;
 import Jeu.Manitou;
 
 public class MainTestIG {
@@ -15,8 +15,8 @@ public class MainTestIG {
 		// TODO Auto-generated method stub
 		Manitou manitou= new Manitou();
 		
-		//Pong pong = new Pong();
-		FenetreZac window = new FenetreZac(manitou);
+		Affichage pong = new Affichage(manitou);
+		FenetreDemarrage window = new FenetreDemarrage(manitou,pong);
 		window.show();
 //		Interface2 menu = new Interface2(manitou); 
 //		menu.show();

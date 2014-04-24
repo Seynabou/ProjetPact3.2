@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class FenetreConfig {
 
 	private JFrame fenetre = new JFrame("Configurations");
-	private FenetreZac fenetrePrinc ;
+	private FenetreDemarrage fenetrePrinc ;
 	private JPanel panneauPrinc = (JPanel) this.fenetre.getContentPane();
 	private ConfigData donnees = new ConfigData();
 	private PanneauDecorImage panneauDecorImage;
@@ -21,7 +21,7 @@ public class FenetreConfig {
 		this.fenetre.setVisible(true);
 	}
 
-	public FenetreConfig(FenetreZac fenetrePrinc){
+	public FenetreConfig(FenetreDemarrage fenetrePrinc){
 		this.fenetrePrinc=fenetrePrinc;
 	}
 	private void getReady() {

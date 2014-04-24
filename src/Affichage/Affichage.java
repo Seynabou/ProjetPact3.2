@@ -20,11 +20,12 @@ import Jeu.DecorInterface;
 import Jeu.Manitou;
 import Jeu.Raquette;
 import Jeu.TableDePingPong;
+import moduleIG.ConfigData;
 import moduleIntegration.SetRaquetteDecoGuiAffichage;
 import Affichage.Texture;
 import Affichage.TexturedVBO;
 
-// cette classe contient des methodes qui vont etre appelees par GUI pour lui donner le décor et la raquette choisis 
+// cette classe contient des methodes qui vont etre appelees par GUI pour lui donner le dï¿½cor et la raquette choisis 
 
 
 @SuppressWarnings("unused")
@@ -59,9 +60,9 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 
     // Gestionnaire  
     Manitou manitou;
-	//message = message+"matrice du descripteur envoyée à Classif  " + time;
+	//message = message+"matrice du descripteur envoyï¿½e ï¿½ Classif  " + time;
 	
-	//creer un constructeur permettant de créer un écran d'affichage (il est utilisé par ex dans la classe fenetre
+	//creer un constructeur permettant de crï¿½er un ï¿½cran d'affichage (il est utilisï¿½ par ex dans la classe fenetre
 	//pour appeler ses methodes setDeco et setRaquette
 	
 
@@ -117,10 +118,10 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		glLoadIdentity();
 		glViewport(0, 0, Display.getWidth(), Display.getHeight());
 		glOrtho(0,640,480,0,1,-1);
-		glClearColor(0.5f, 0.5f, 0.5f, 0.0f); // fenêtre de couleur grise
+		glClearColor(0.5f, 0.5f, 0.5f, 0.0f); // fenï¿½tre de couleur grise
 		glClearDepth(1.0f); // efface le buffer pour la vue en profondeur
 		glDisable(GL_DEPTH_TEST); // Active le test de profondeur
-		glDepthFunc(GL_LEQUAL); //définit le type de test à utiliser pour le test de profondeur
+		glDepthFunc(GL_LEQUAL); //dï¿½finit le type de test ï¿½ utiliser pour le test de profondeur
 		
 		
 		float fovy = 45.0f;
@@ -131,34 +132,34 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 		glMatrixMode(GL_MODELVIEW);
 		
-		//choisit la qualité de couleur/texture la plus correcte
+		//choisit la qualitï¿½ de couleur/texture la plus correcte
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); 
 		
 		
-       // Variables et méthodes pour l'éclairage
+       // Variables et mï¿½thodes pour l'ï¿½clairage
 		
 		initLightArrays();
 		glShadeModel(GL_SMOOTH);
-		// définit une couleur de matière réfléchissante
+		// dï¿½finit une couleur de matiï¿½re rï¿½flï¿½chissante
 		glMaterial(GL_FRONT, GL_SPECULAR, matSpecular);	
 		
-		// définit la brillance
+		// dï¿½finit la brillance
 		glMaterialf(GL_FRONT, GL_SHININESS, 50.0f);					
-		// définit la position de la lumière
+		// dï¿½finit la position de la lumiï¿½re
 		glLight(GL_LIGHT0, GL_POSITION, lightPosition);	
-		// met la lumière réfléchissante en blanc
+		// met la lumiï¿½re rï¿½flï¿½chissante en blanc
 		glLight(GL_LIGHT0, GL_SPECULAR, whiteLight);
-		// met la lumière diffuse en blanc
+		// met la lumiï¿½re diffuse en blanc
 		glLight(GL_LIGHT0, GL_DIFFUSE, whiteLight);		
-		// lumière ambiante globale
+		// lumiï¿½re ambiante globale
 		glLightModel(GL_LIGHT_MODEL_AMBIENT, lModelAmbient);	
-		// active l'éclairage
+		// active l'ï¿½clairage
 		glEnable(GL_LIGHTING);	
-		// active la lumière n°1
+		// active la lumiï¿½re nï¿½1
 		glEnable(GL_LIGHT0);										
-		// permet à OpenGL d'utiliser glColor3f pour définir la couleur 
+		// permet ï¿½ OpenGL d'utiliser glColor3f pour dï¿½finir la couleur 
 		glEnable(GL_COLOR_MATERIAL);		
-		// définir les propriétés ambiantes et diffuses des fronts de polygones 
+		// dï¿½finir les propriï¿½tï¿½s ambiantes et diffuses des fronts de polygones 
 		glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);			
 
 
@@ -185,7 +186,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 	  }
 	   
-	 //------- Ajouté pour le test d'éclairage----------//
+	 //------- Ajoutï¿½ pour le test d'ï¿½clairage----------//
 		private void initLightArrays() {
 			
 			matSpecular = BufferUtils.createFloatBuffer(4);
@@ -202,7 +203,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 			
 		}
 
-		//là il doit prendre la raquette choisie et l'adapter dans l'ecran
+		//lï¿½ il doit prendre la raquette choisie et l'adapter dans l'ecran
 		
 	  public void setRaquette(int choixRaquette) {
 		// TODO Auto-generated method stub	
@@ -215,7 +216,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		  if (choixRaquette==4) nom_texture_raquette = "banane.jpg";
 		
 	 }
-	  // Le rendu à ma fenêtre de jeu
+	  // Le rendu ï¿½ ma fenï¿½tre de jeu
 	  
 	  private void render() {
 		
@@ -247,7 +248,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	 public void setDeco(int choixDeco) {
 		// TODO Auto-generated method stub
 		
-		//là il doit prendre l'image du déco et le mettre dans l'ecran
+		//lï¿½ il doit prendre l'image du dï¿½co et le mettre dans l'ecran
 		
 	 	if (choixDeco==1) nom_texture_deco = "ocean.jpg";
 		if (choixDeco==2) nom_texture_deco = "jungle.jpg";
@@ -257,7 +258,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 	 }
 	
-	//après il affiche l'ecran et le jeu commence 
+	//aprï¿½s il affiche l'ecran et le jeu commence 
 	 
 	 	public static void main(String[] args){
 	 	
@@ -266,7 +267,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 	 	}
 
-	 	// Affichage à la console de la position de la balle et l'etat de la raquette 
+	 	// Affichage ï¿½ la console de la position de la balle et l'etat de la raquette 
 	
 	 	public void afficher(){
 	 		
@@ -274,9 +275,13 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		  Balle balle = manitou.getBalle();
 		  System.out.println(balle.getX()+"  "+balle.getY()+"  "+balle.getZ()+"  ");
 		  manitou.getRaquetteP1();
-		  System.out.println("j'ai reçu la raquette");
+		  System.out.println("j'ai reï¿½u la raquette");
 	
 	 	
+	 	}
+	 	public void traiterDonnees(ConfigData donnees){
+	 		setRaquette(donnees.raquette);
+	 		setDeco(donnees.decor);
 	 	}
 	
 
