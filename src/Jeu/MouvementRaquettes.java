@@ -1,14 +1,14 @@
 package Jeu;
 
-public class MouvementRaquettes implements Runnable {
+public class MouvementRaquettes  {
 
-	RaquetteInterface raquetteP1;
-	RaquetteInterface raquetteP2;
-	DecorInterface decor;
+	Raquette raquetteP1;
+	Raquette raquetteP2;
+	TableDePingPong decor;
 	int j1;
 	int j2;
 	boolean balleStaysInTheField;
-	public MouvementRaquettes(RaquetteInterface raquetteP1,RaquetteInterface raquetteP2,DecorInterface decor, int directionP1, int directionP2){
+	public MouvementRaquettes(Raquette raquetteP1,Raquette raquetteP2,TableDePingPong decor, int directionP1, int directionP2){
 
 		this.raquetteP1=raquetteP1;
 		this.raquetteP2=raquetteP2;

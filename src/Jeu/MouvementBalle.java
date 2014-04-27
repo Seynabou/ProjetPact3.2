@@ -1,12 +1,12 @@
 package Jeu;
 
-public class MouvementBalle implements Runnable {
+public class MouvementBalle{
 
 	Balle balle;
-	DecorInterface decor;
-	RaquetteInterface raquetteP1;
-	RaquetteInterface raquetteP2;
-	ScoreInterface score;
+	TableDePingPong decor;
+	Raquette raquetteP1;
+	Raquette raquetteP2;
+	Score score;
 	double x;
 	double y;
 	double z;
@@ -16,7 +16,7 @@ public class MouvementBalle implements Runnable {
 	int speed;
 	boolean balleStaysInTheField;
 
-	public MouvementBalle(BalleInterface balle, DecorInterface decor, RaquetteInterface raquetteP1, RaquetteInterface raquetteP2, ScoreInterface score){
+	public MouvementBalle(Balle balle, TableDePingPong decor, Raquette raquetteP1, Raquette raquetteP2, Score score){
 		this.balle=(Balle) balle;
 		this.decor=decor;
 		this.raquetteP1=raquetteP1;

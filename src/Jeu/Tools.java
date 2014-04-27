@@ -10,21 +10,21 @@ public class Tools  {
 	
 	 // The VBO of this object
     
-	public Tools(double x, double y, double z, double theta,double phi, int v) {
+	public Tools(double x, double y, double z, double dx,double dy, double dz) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.theta = theta;
-		this.v = v;
-		this.phi=phi;
+		this.dx = dx;
+		this.dz = dz;
+		this.dy=dy;
 	}
 	
 
 	protected double z;
-	protected double theta;
-	protected double phi;
-	protected int v;
+	protected double dx;
+	protected double dy;
+	protected double dz;
 	
 	public double getX() {
 		// TODO Auto-generated method stub
@@ -45,15 +45,15 @@ public class Tools  {
 	}
 
 	
-	public double getAngleTheta() {
+	public double getAngleDx() {
 		// TODO Auto-generated method stub
-		return this.theta;
+		return this.dx;
 	}
 
 	
-	public int getSpeed() {
+	public double getDz() {
 		// TODO Auto-generated method stub
-		return this.v;
+		return this.dz;
 	}
 
 	
@@ -75,15 +75,15 @@ public class Tools  {
 	}
 
 	
-	public void setAngleTheta(double theta) {
+	public void setAngleDx(double dx) {
 		// TODO Auto-generated method stub
-		this.theta=theta;
+		this.dx=dx;
 	}
 
 	
-	public void setSpeed(int v) {
+	public void setDz(double dz) {
 		// TODO Auto-generated method stub
-		this.v=v;
+		this.dz=dz;
 	}
 
 	
@@ -105,15 +105,15 @@ public class Tools  {
 	}
 
 	
-	public double getAnglePhi() {
+	public double getAngleDy() {
 		// TODO Auto-generated method stub
-		return this.phi;
+		return this.dy;
 	}
 
 	
-	public void setAnglePhi(double phi) {
+	public void setAngleDy(double dy) {
 		// TODO Auto-generated method stub
-		this.phi=phi;
+		this.dy=dy;
 	}
 	
 
@@ -123,8 +123,8 @@ public class Tools  {
 		this.setX(0);
 		this.setY(0);
 		this.setZ(0);
-		this.setAnglePhi(0);
-		this.setAngleTheta(0);
+		this.setAngleDy(0);
+		this.setAngleDx(0);
 	}
 
 }
