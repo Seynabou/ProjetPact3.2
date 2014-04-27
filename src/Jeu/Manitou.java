@@ -11,6 +11,11 @@ IGControleurInterface{
 	public Manitou() {
 		super();
 		// TODO Auto-generated constructor stub
+		directionP1=0;
+		directionP2=0;
+		laBalle=new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score);
+		lesRaquettes=new MouvementRaquettes(raquetteP1, raquetteP2, decor, directionP1, directionP2);
+		
 	}
 	
 	public void traiterDonnees(ConfigData donnees){
@@ -52,12 +57,14 @@ IGControleurInterface{
 	@Override
 	public Balle getBalle() {
 		// TODO Auto-generated method stub
+		laBalle.run();
 		return this.balle;
 	}
 
 	@Override
 	public Raquette getRaquetteP1() {
 		// TODO Auto-generated method stub
+		lesRaquettes.run();
 		return this.raquetteP1;
 	}
 

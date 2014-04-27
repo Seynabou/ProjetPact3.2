@@ -21,7 +21,7 @@ import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Sphere;
 
 import Jeu.Balle;
-import Jeu.DecorInterface;
+
 import Jeu.Manitou;
 import Jeu.Raquette;
 import Jeu.TableDePingPong;
@@ -45,7 +45,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	private boolean isRunning=true;
 	private long lastFrame;
 	
-	private DecorInterface decor=new TableDePingPong(10,6,0);
+	private TableDePingPong decor=new TableDePingPong(10,6,0);
 	private int speed=1;
 	private double alea=Math.random()*Math.PI*2;
 	

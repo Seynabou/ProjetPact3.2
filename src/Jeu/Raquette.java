@@ -1,13 +1,11 @@
 package Jeu;
 
-import Affichage.TexturedVBO;
-
 public class Raquette extends Tools {
 	
 
 	private int width;
-	public Raquette(float x, float y, float z, int v, float raquette_width) {
-		super(x, y, z, 0,0, v);
+	public Raquette(float x, float y, float z, double dy, float raquette_width) {
+		super(x, y, z, 0,dy, 0);
 		//this.width=width;
 		
 	     width = (int) raquette_width;
@@ -19,8 +17,8 @@ public class Raquette extends Tools {
 		// TODO Auto-generated method stub
 		//a modifier
 //		System.out.println("Il y a des rebonds");
-		b.setAnglePhi(b.getAnglePhi());
-		b.setAngleTheta(b.getAngleTheta());
+		double dx = b.getDx();
+		b.setDx(-dx);
 	}
 	
 	

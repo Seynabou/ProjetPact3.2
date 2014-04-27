@@ -45,7 +45,7 @@ public class Tools  {
 	}
 
 	
-	public double getAngleDx() {
+	public double getDx() {
 		// TODO Auto-generated method stub
 		return this.dx;
 	}
@@ -75,7 +75,7 @@ public class Tools  {
 	}
 
 	
-	public void setAngleDx(double dx) {
+	public void setDx(double dx) {
 		// TODO Auto-generated method stub
 		this.dx=dx;
 	}
@@ -87,44 +87,35 @@ public class Tools  {
 	}
 
 	
-	public boolean isAtLimitsX(TableDePingPong d) {
-		// TODO Auto-generated method stub
-		return (Math.abs(this.x)<d.getX());
-	}
+
 
 	
-	public boolean isAtLimitsY(TableDePingPong d) {
-		// TODO Auto-generated method stub
-		return (Math.abs(this.y)<d.getY());
-	}
-
-	
-	public boolean isAtLimitsZ(TableDePingPong d) {
-		// TODO Auto-generated method stub
-		return (Math.abs(this.z)<d.getZ());
-	}
-
-	
-	public double getAngleDy() {
+	public double getDy() {
 		// TODO Auto-generated method stub
 		return this.dy;
 	}
 
 	
-	public void setAngleDy(double dy) {
+	public void setDy(double dy) {
 		// TODO Auto-generated method stub
 		this.dy=dy;
 	}
 	
 
+	public void move(){
+		x=+dx;
+		y=+dy;
+		z=+dz;
+	}
 	
 	public void reInitialize() {
 		// TODO Auto-generated method stub
 		this.setX(0);
 		this.setY(0);
 		this.setZ(0);
-		this.setAngleDy(0);
-		this.setAngleDx(0);
+		this.setDy(Math.random());
+		this.setDx(Math.random());
+		this.setDz(Math.random());
 	}
 
 }

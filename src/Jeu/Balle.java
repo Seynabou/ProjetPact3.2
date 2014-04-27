@@ -5,8 +5,8 @@ public class Balle extends Tools {
 
 
     
-	public Balle(double x, double y, double z, double theta,double phi, int v,int radius) {
-		super(x, y, z, theta,phi, v);
+	public Balle(double x, double y, double z, double dx,double dy, double dz,int radius) {
+		super(x, y, z, dx,dy, dz);
 		this.radius=radius;
 		
 	  
@@ -28,19 +28,19 @@ public class Balle extends Tools {
 		return radius;
 	}
 	
-	@Override
+
 	public boolean isAtLimitsX(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.getX())<d.getX()-this.getRadius());
 	}
 
-	@Override
+	
 	public boolean isAtLimitsY(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.getY())<d.getY()-this.getRadius());
 	}
 
-	@Override
+	
 	public boolean isAtLimitsZ(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.getZ())<d.getZ()-this.getRadius());

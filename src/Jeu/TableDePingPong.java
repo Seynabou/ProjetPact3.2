@@ -19,24 +19,15 @@ public class TableDePingPong {
 		// TODO Auto-generated method stub
 		if (b.isAtLimitsY(this))
 		{
-			if (b.getY()<0)
-			{
-				double theta = b.getAngleTheta();
-				b.setAngleTheta(theta-Math.PI/2);
-				
-			}
-			
-			else
-			{
-				double theta = b.getAngleTheta();
-				b.setAngleTheta(theta+Math.PI/2);
-			}
+			double dy = b.getDy();
+			b.setDy(-dy);
 			
 		}
 		if (b.isAtLimitsZ(this))
 		{
 			
-			
+			double dz = b.getDz();
+			b.setDz(-dz);
 		}
 		
 	}

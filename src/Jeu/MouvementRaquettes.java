@@ -19,59 +19,37 @@ public class MouvementRaquettes  {
 
 
 	public void run(){
+		raquetteP1.setDy(2*j1-1);
+		raquetteP2.setDy(2*j2-1);
+		raquetteP1.move();
+		raquetteP2.move();
 
 
-		if (j1==1){
-			double y = raquetteP1.getY();
-			raquetteP1.setY(y-raquetteP1.getSpeed());
-			if (raquetteP1.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP1.setY(-decor.getY()/2+raquetteP1.getWidth()/2);
-				}
-				else{
-					raquetteP1.setY(decor.getY()/2-raquetteP1.getWidth()/2);
-				}
+
+
+		if (raquetteP1.isAtLimitsY(decor)){
+			if (raquetteP1.getY()<0){
+				raquetteP1.setY(-decor.getY()/2+raquetteP1.getWidth()/2);
 			}
-		}
-		else {
-			double y = raquetteP1.getY();
-			raquetteP1.setY(y+raquetteP1.getSpeed());
-			if (raquetteP1.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP1.setY(-decor.getY()/2+raquetteP1.getWidth()/2);
-				}
-				else{
-					raquetteP1.setY(decor.getY()/2-raquetteP1.getWidth()/2);
-				}
+			else{
+				raquetteP1.setY(decor.getY()/2-raquetteP1.getWidth()/2);
 			}
 		}
 
-		if (j2==1){
-			double y = raquetteP2.getY();
-			raquetteP2.setY(y-raquetteP2.getSpeed());
-			if (raquetteP2.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP2.setY(-decor.getY()/2+raquetteP2.getWidth()/2);
-				}
-				else{
-					raquetteP2.setY(decor.getY()/2-raquetteP2.getWidth()/2);
-				}
-			}
-		}
-		else {
-			double y = raquetteP2.getY();
-			raquetteP2.setY(y+raquetteP2.getSpeed());
-			if (raquetteP2.isAtLimitsY(decor)){
-				if (y<0){
-					raquetteP2.setY(-decor.getY()/2+raquetteP2.getWidth()/2);
-				}
-				else{
-					raquetteP2.setY(decor.getY()/2-raquetteP2.getWidth()/2);
-				}
-			}
-		}
-		this.balleStaysInTheField=decor.getBalleStaysInTheField();
 
+
+
+		if (raquetteP2.isAtLimitsY(decor)){
+			if (raquetteP2.getY()<0){
+				raquetteP2.setY(-decor.getY()/2+raquetteP2.getWidth()/2);
+			}
+			else{
+				raquetteP2.setY(decor.getY()/2-raquetteP2.getWidth()/2);
+			}
+
+
+			this.balleStaysInTheField=decor.getBalleStaysInTheField();
+
+		}
 	}
 }
-
