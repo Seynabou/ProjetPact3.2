@@ -1,7 +1,7 @@
 package Jeu;
 
 
-public class Balle extends Tools implements BalleInterface{
+public class Balle extends Tools {
 
 
     
@@ -15,33 +15,33 @@ public class Balle extends Tools implements BalleInterface{
 
 	
 	private int radius;
-	@Override
-	public boolean staysInTheField(RaquetteInterface r) {
+	
+	public boolean staysInTheField(Raquette r) {
 		// TODO Auto-generated method stub
 		
 		return (Math.abs(r.getY()-this.getY())<r.getWidth()/2);
 	}
 
-	@Override
+	
 	public int getRadius() {
 		// TODO Auto-generated method stub
 		return radius;
 	}
 	
 	@Override
-	public boolean isAtLimitsX(DecorInterface d) {
+	public boolean isAtLimitsX(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.getX())<d.getX()-this.getRadius());
 	}
 
 	@Override
-	public boolean isAtLimitsY(DecorInterface d) {
+	public boolean isAtLimitsY(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.getY())<d.getY()-this.getRadius());
 	}
 
 	@Override
-	public boolean isAtLimitsZ(DecorInterface d) {
+	public boolean isAtLimitsZ(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.getZ())<d.getZ()-this.getRadius());
 	}

@@ -13,9 +13,9 @@ public void setZ(double z);
 public void setAngleTheta(double theta);
 public void setAnglePhi(double phi);
 public void setSpeed(int v);
-public boolean isAtLimitsX(DecorInterface d);
-public boolean isAtLimitsY(DecorInterface d);
-public boolean isAtLimitsZ(DecorInterface d);
+public boolean isAtLimitsX(TableDePingPong d);
+public boolean isAtLimitsY(TableDePingPong d);
+public boolean isAtLimitsZ(TableDePingPong d);
 public void reInitialize();
 
 }

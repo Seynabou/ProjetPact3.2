@@ -2,7 +2,7 @@ package Jeu;
 
 import Affichage.TexturedVBO;
 
-public class Raquette extends Tools implements RaquetteInterface {
+public class Raquette extends Tools {
 	
 
 	private int width;
@@ -14,8 +14,8 @@ public class Raquette extends Tools implements RaquetteInterface {
 		
 	}
 
-	@Override
-	public void Rebond(BalleInterface b) {
+	
+	public void Rebond(Balle b) {
 		// TODO Auto-generated method stub
 		//a modifier
 //		System.out.println("Il y a des rebonds");
@@ -23,8 +23,8 @@ public class Raquette extends Tools implements RaquetteInterface {
 		b.setAngleTheta(b.getAngleTheta());
 	}
 	
-	@Override
-	public boolean isAtLimitsY(DecorInterface d){
+	
+	public boolean isAtLimitsY(TableDePingPong d){
 		return ((this.getY()+this.width/2>d.getY()/2)||(this.getY()-this.width/2<d.getY()/2));
 	}
 

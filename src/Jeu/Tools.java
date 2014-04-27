@@ -2,7 +2,7 @@ package Jeu;
 
 
 
-public class Tools implements MovingObject {
+public class Tools  {
 
 	
 	protected double x;
@@ -25,99 +25,99 @@ public class Tools implements MovingObject {
 	protected double theta;
 	protected double phi;
 	protected int v;
-	@Override
+	
 	public double getX() {
 		// TODO Auto-generated method stub
 		return this.x;
 	}
 
-	@Override
+	
 	
 	public double getY() {
 		// TODO Auto-generated method stub
 		return this.y;
 	}
 
-	@Override
+	
 	public double getZ() {
 		// TODO Auto-generated method stub
 		return this.z;
 	}
 
-	@Override
+	
 	public double getAngleTheta() {
 		// TODO Auto-generated method stub
 		return this.theta;
 	}
 
-	@Override
+	
 	public int getSpeed() {
 		// TODO Auto-generated method stub
 		return this.v;
 	}
 
-	@Override
+	
 	public void setX(double x) {
 		// TODO Auto-generated method stub
 		this.x=x;
 	}
 
-	@Override
+	
 	public void setY(double y) {
 		// TODO Auto-generated method stub
 		this.y=y;
 	}
 
-	@Override
+	
 	public void setZ(double z) {
 		// TODO Auto-generated method stub
 		this.z=z;
 	}
 
-	@Override
+	
 	public void setAngleTheta(double theta) {
 		// TODO Auto-generated method stub
 		this.theta=theta;
 	}
 
-	@Override
+	
 	public void setSpeed(int v) {
 		// TODO Auto-generated method stub
 		this.v=v;
 	}
 
-	@Override
-	public boolean isAtLimitsX(DecorInterface d) {
+	
+	public boolean isAtLimitsX(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.x)<d.getX());
 	}
 
-	@Override
-	public boolean isAtLimitsY(DecorInterface d) {
+	
+	public boolean isAtLimitsY(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.y)<d.getY());
 	}
 
-	@Override
-	public boolean isAtLimitsZ(DecorInterface d) {
+	
+	public boolean isAtLimitsZ(TableDePingPong d) {
 		// TODO Auto-generated method stub
 		return (Math.abs(this.z)<d.getZ());
 	}
 
-	@Override
+	
 	public double getAnglePhi() {
 		// TODO Auto-generated method stub
 		return this.phi;
 	}
 
-	@Override
+	
 	public void setAnglePhi(double phi) {
 		// TODO Auto-generated method stub
 		this.phi=phi;
 	}
 	
 
-	@Override
+	
 	public void reInitialize() {
 		// TODO Auto-generated method stub
 		this.setX(0);

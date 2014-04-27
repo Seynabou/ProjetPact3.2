@@ -17,7 +17,7 @@ IGControleurInterface{
 		this.speed=donnees.difficulte;
 	}
 	
-	private DecorInterface decor=new TableDePingPong(10,6,0);
+	private TableDePingPong decor=new TableDePingPong(10,6,0);
 	private int speed=1;
 	private int directionP1;
 	private int directionP2;
@@ -35,22 +35,7 @@ IGControleurInterface{
 		this.pause= !pause;
 		System.out.println("Je mets le jeu en pause");
 	}
-	@Override
-	public void lancerJeu() throws InterruptedException {
-		// TODO Auto-generated method stub
-
-		while (score.limiteAtteinte(10)){
-			laBalle= new MouvementBalle(balle, decor, raquetteP1, raquetteP2, score );
-			lesRaquettes = new MouvementRaquettes(raquetteP1, raquetteP2, decor, directionP1, directionP2);
-			while(decor.getBalleStaysInTheField()&&!pause){
-				laBalle.run();
-				lesRaquettes.run();
-			}
-
-
-		}
-
-	}
+	
 
 	@Override
 	public void setDirectionP1(int direction) {
@@ -62,11 +47,7 @@ IGControleurInterface{
 		// TODO Auto-generated method stub
 		this.directionP2=direction;
 	}
-	@Override
-	public void setSpeed(int vitesse) {
-		// TODO Auto-generated method stub
-		this.speed=vitesse;
-	}
+
 
 	@Override
 	public Balle getBalle() {
@@ -86,11 +67,7 @@ IGControleurInterface{
 		return this.raquetteP2;
 	}
 
-	@Override
-	public void setMode(int mode) {
-		// TODO Auto-generated method stub
-
-	}
+	
 	
 	public void quitter(){
 		

@@ -1,6 +1,6 @@
 package Jeu;
 
-public class TableDePingPong  implements DecorInterface{
+public class TableDePingPong {
 
 	private final double x;
 	private final double y;
@@ -14,8 +14,8 @@ public class TableDePingPong  implements DecorInterface{
 		this.z = z;
 	}
 
-	@Override
-	public void Rebond(BalleInterface b) {
+	
+	public void Rebond(Balle b) {
 		// TODO Auto-generated method stub
 		if (b.isAtLimitsY(this))
 		{
@@ -41,31 +41,31 @@ public class TableDePingPong  implements DecorInterface{
 		
 	}
 
-	@Override
+	
 	public double getX() {
 		// TODO Auto-generated method stub
 		return this.x;
 	}
 
-	@Override
+	
 	public double getY() {
 		// TODO Auto-generated method stub
 		return this.y;
 	}
 
-	@Override
+	
 	public double getZ() {
 		// TODO Auto-generated method stub
 		return this.z;
 	}
 
-	@Override
+	
 	public boolean getBalleStaysInTheField() {
 		// TODO Auto-generated method stub
 		return this.balleStaysInTheField;
 	}
 
-	@Override
+	
 	public void setBalleStaysInTheField(boolean position) {
 		// TODO Auto-generated method stub
 		this.balleStaysInTheField=position;
