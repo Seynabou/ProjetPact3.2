@@ -122,9 +122,9 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		float aspect = DISPLAY_MODE.getWidth() / (float)DISPLAY_MODE.getHeight();
 		float zNear = 0.1f;
 		float zFar = 200.0f;
-		//GLU.gluPerspective(fovy, aspect, zNear, zFar);
+		GLU.gluPerspective(fovy, aspect, zNear, zFar);
 		
-		//glMatrixMode(GL_MODELVIEW);
+		glMatrixMode(GL_MODELVIEW);
 		
 		//choisit la qualit� de couleur/texture la plus correcte
 		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST); 
@@ -173,8 +173,8 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 		Texture arriereplan = Texture.loadTexture(nom_texture_deco);
 		arriereplanVBO = TexturedVBO.loadTexturedVBO(arriereplan);
-		arriereplan.width = 800;
-		arriereplan.height =600;
+		arriereplan.width = 640;
+		arriereplan.height =480;
 
 
 		
@@ -224,15 +224,19 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 
 			//  render de la raquette
 		
-			raquette1VBO.render(manitou.getRaquetteP1().getX(), manitou.getRaquetteP1().getY(), manitou.getRaquetteP1().getZ());
-			raquette2VBO.render(manitou.getRaquetteP2().getX()+200, manitou.getRaquetteP2().getY(), manitou.getRaquetteP2().getZ());
+			Raquette raquetteP1 = manitou.getRaquetteP1();
+			Raquette raquetteP2 = manitou.getRaquetteP2();
+			Balle balle = manitou.getBalle();
+			
+			raquette1VBO.render(raquetteP1.getX(), raquetteP1.getY(), raquetteP1.getZ());
+			raquette2VBO.render(raquetteP2.getX()+200, raquetteP2.getY(), raquetteP2.getZ());
 	  
-	        balleVBO.render(manitou.getBalle().getX(), manitou.getBalle().getY(), manitou.getBalle().getZ());
+	        balleVBO.render(balle.getX(), balle.getY(), balle.getZ());
 			
 			
-		//	glColor3f(1.0f, 0.0f, 1.0f);
-		//	Sphere balle = new Sphere();
-		//	balle.draw(0.2f, 20, 16);
+//			glColor3f(1.0f, 0.0f, 1.0f);
+//			Sphere balle1 = new Sphere();
+//			balle1.draw(0.2f, 20, 16);
 	   
 	  
 	  
@@ -252,25 +256,11 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 	//apr�s il affiche l'ecran et le jeu commence 
 	 
-	 	public static void main(String[] args){
 	 	
-		  Manitou manitou = new Manitou();
-		  new Affichage(manitou);
-	
-	 	}
 
 	 	// Affichage � la console de la position de la balle et l'etat de la raquette 
 	
-	 	public void afficher(){
-	 		
-		  Manitou manitou = new Manitou();
-		  Balle balle = manitou.getBalle();
-		  System.out.println(balle.getX()+"  "+balle.getY()+"  "+balle.getZ()+"  ");
-		  manitou.getRaquetteP1();
-		  System.out.println("j'ai re�u la raquette");
 	
-	 	
-	 	}
 	
 	 	public void play(){
 	 		setDisplay();
