@@ -108,7 +108,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		glMatrixMode(GL_PROJECTION);
 	    glLoadIdentity();
 
-	    glMatrixMode(GL_MODELVIEW);
+//	    glMatrixMode(GL_MODELVIEW);
 	    glOrtho(0, 640, 480, 0, 1, -1);
 	    glViewport(0, 0, Display.getWidth(), Display.getHeight());
 
