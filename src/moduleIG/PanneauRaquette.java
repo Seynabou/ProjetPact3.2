@@ -27,7 +27,7 @@ public class PanneauRaquette {
 
 	private void getReady() {
 		panneau.setLayout(new FlowLayout());
-		JRadioButton boutonRaquette1 = new JRadioButton("Raquette 1");
+		JRadioButton boutonRaquette1 = new JRadioButton("Banane");
 		boutonRaquette1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
 				donnees.raquette = 1;
@@ -36,7 +36,7 @@ public class PanneauRaquette {
 		});
 		section.add(boutonRaquette1);
 		panneau.add(boutonRaquette1);
-		JRadioButton boutonRaquette2 = new JRadioButton("Raquette 2");
+		JRadioButton boutonRaquette2 = new JRadioButton("Raquette de Ping-pong");
 		boutonRaquette2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
 				donnees.raquette = 2;
@@ -45,7 +45,7 @@ public class PanneauRaquette {
 		});
 		section.add(boutonRaquette2);
 		panneau.add(boutonRaquette2);
-		JRadioButton boutonRaquette3 = new JRadioButton("Raquette 3");
+		JRadioButton boutonRaquette3 = new JRadioButton("Requin-marteau");
 		boutonRaquette3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
 				donnees.raquette = 3;

@@ -27,7 +27,7 @@ public class PanneauDecor {
 
 	private void getReady() {
 		panneau.setLayout(new FlowLayout());
-		JRadioButton boutonDecor1 = new JRadioButton("Decor 1");
+		JRadioButton boutonDecor1 = new JRadioButton("Welcome to the Jungle");
 		boutonDecor1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
 				
@@ -37,7 +37,7 @@ public class PanneauDecor {
 		});
 		section.add(boutonDecor1);
 		panneau.add(boutonDecor1);
-		JRadioButton boutonDecor2 = new JRadioButton("Decor 2");
+		JRadioButton boutonDecor2 = new JRadioButton("City");
 		boutonDecor2.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
 				donnees.decor = 2;
@@ -46,7 +46,7 @@ public class PanneauDecor {
 		});
 		section.add(boutonDecor2);
 		panneau.add(boutonDecor2);
-		JRadioButton boutonDecor3 = new JRadioButton("Decor 3");
+		JRadioButton boutonDecor3 = new JRadioButton("Peur Bleue");
 		boutonDecor3.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
 				donnees.decor = 3;
