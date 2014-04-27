@@ -17,7 +17,13 @@ public class MouvementRaquettes  {
 		this.j2=directionP2;
 	}
 
+	public void setDirectionP1(int direction){
+		this.j1=direction;
+	}
 
+	public void setDirectionP2(int direction){
+		this.j2=direction;
+	}
 	public void run(){
 		raquetteP1.setDy(2*j1-1);
 		raquetteP2.setDy(2*j2-1);

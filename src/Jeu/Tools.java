@@ -103,9 +103,9 @@ public class Tools  {
 	
 
 	public void move(){
-		x=+dx;
-		y=+dy;
-		z=+dz;
+		x+=dx;
+		y+=dy;
+		z+=dz;
 	}
 	
 	public void reInitialize() {

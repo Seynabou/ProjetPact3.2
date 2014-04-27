@@ -3,8 +3,8 @@ package Jeu;
 public class Raquette extends Tools {
 	
 
-	private int width;
-	public Raquette(float x, float y, float z, double dy, float raquette_width) {
+	private double width;
+	public Raquette(double x, double y, double z, double dy, double raquette_width) {
 		super(x, y, z, 0,dy, 0);
 		//this.width=width;
 		
@@ -23,14 +23,14 @@ public class Raquette extends Tools {
 	
 	
 	public boolean isAtLimitsY(TableDePingPong d){
-		return ((this.getY()+this.width/2>d.getY()/2)||(this.getY()-this.width/2<d.getY()/2));
+		return ((y+width/2>d.getY()/2)||(y-width/2<-d.getY()/2));
 	}
 
-	public int getWidth() {
+	public double getWidth() {
 		return width;
 	}
 
-	public void setWidth(int width) {
+	public void setWidth(double width) {
 		this.width = width;
 	}
 
