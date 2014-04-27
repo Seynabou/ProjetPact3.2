@@ -47,7 +47,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 	private TableDePingPong decor=new TableDePingPong(10,6,0);
 	private int speed=1;
-	private double alea=Math.random()*Math.PI*2;
+	
 	
 	private float zTranslation = -2f;
 	private static final DisplayMode DISPLAY_MODE = new DisplayMode(WIDTH, HEIGHT);

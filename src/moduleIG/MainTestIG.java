@@ -18,7 +18,6 @@ public class MainTestIG {
 		Affichage pong = new Affichage(manitou);
 		FenetreDemarrage window = new FenetreDemarrage(manitou,pong);
 		window.show();
-//		Interface2 menu = new Interface2(manitou); 
-//		menu.show();
+
 	}
 }
