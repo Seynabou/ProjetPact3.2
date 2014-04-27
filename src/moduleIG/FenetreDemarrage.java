@@ -39,10 +39,12 @@ public class FenetreDemarrage {
 
 		jouer.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				System.out.println("On joue!");	
-				pong.afficher();
+				FenetreJeu fenetre =new FenetreJeu(manitou);
+				fenetre.show();
+				pong.play();
 				FenetreFin window = new FenetreFin(manitou,pong);
 				window.show();
+				close();
 			}
 		});
 		jouer.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/play.png")));
@@ -52,6 +54,7 @@ public class FenetreDemarrage {
 			public void mouseClicked(MouseEvent e){
 				configurations=new FenetreConfig(getThis());
 				configurations.show();
+				
 			}
 		});
 		config.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/settings.png")));
@@ -76,6 +79,10 @@ public class FenetreDemarrage {
 	
 	public FenetreDemarrage getThis(){
 		return this;
+	}
+	public void close(){
+		fenetre.setVisible(false);
+		fenetre.dispose();
 	}
 
 }

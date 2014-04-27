@@ -91,6 +91,10 @@ IGControleurInterface{
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void quitter(){
+		
+	}
 
 	// Il faut rajouter des setters et getters concernant les 4 differents décors et les 4 différents types de raquette
 

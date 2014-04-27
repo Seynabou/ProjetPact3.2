@@ -9,14 +9,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Affichage.Affichage;
+import Jeu.Manitou;
+
 public class FenetrePause {
 
 	private JFrame fenetre=new JFrame("Menu de Pause");
 	private JPanel panneau=(JPanel) fenetre.getContentPane();
+	private Manitou manitou;
 	
 	
-	public FenetrePause() {
-		// TODO Auto-generated constructor stub
+	public FenetrePause(Manitou manitou) {
+
+		this.manitou=manitou;
 	}
 
 	private void getReady(){
@@ -24,7 +29,7 @@ public class FenetrePause {
 		JButton reprendre= new JButton("Reprendre");
 		reprendre.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				
+				manitou.mettreEnPause_Reprendre();
 			}
 		});
 		reprendre.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/play.png")));
@@ -32,7 +37,7 @@ public class FenetrePause {
 		JButton quitter = new JButton("Quitter");
 		quitter.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				
+				System.exit(0);
 			}
 		});
 		quitter.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/quitter.png")));
@@ -40,7 +45,10 @@ public class FenetrePause {
 		JButton retour = new JButton("Retour au menu principal");
 		retour.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e){
-				
+				manitou.quitter();
+				Affichage pong = new Affichage(manitou);
+				FenetreDemarrage window = new FenetreDemarrage(manitou, pong);
+				window.show();
 			}
 		});
 		retour.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/retour.png")));

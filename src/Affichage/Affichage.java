@@ -37,7 +37,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	
 	private String chemin = "data\\ReproductionEXEC";
 	private String message = "";
-	private String nom_texture_deco="", nom_texture_raquette="",nom_texture_balle="ball.png";
+	private String nom_texture_deco="jungle.jpg", nom_texture_raquette="banane.jpg",nom_texture_balle="ball.png";
 	GregorianCalendar calendar = new GregorianCalendar();
 	Date time  = calendar.getTime();
 	public static final int WIDTH=640, HEIGHT=480;
@@ -73,27 +73,14 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	public Affichage(Manitou le_manitou){
 
 	    manitou = le_manitou;
-		setDisplay();
+		
 		setRaquette(1);
 		setDeco(1);
-		initGL();
+	
 	
 		//setTimer();
 		
-		while(isRunning){
-			
-			render();
-			Display.update();
-		
-			if(Display.isCloseRequested()){
-				
-				isRunning=false;
-			}
-			
-		}
-		
-		Display.destroy();
-	 }
+			 }
 	
 	
 	//Gestion de l'Affichage
@@ -104,7 +91,7 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		 
 	 
 		Display.setDisplayMode(new DisplayMode(WIDTH,HEIGHT));
-		Display.setTitle("Pong");
+		Display.setTitle("Mental Pong");
 		Display.create();
 		
 	      }catch (LWJGLException e){
@@ -215,11 +202,10 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		// TODO Auto-generated method stub	
 		
 		
-		 // nom_texture_raquette = "C:/Users/FATIMATA/workspace/PACT3.2/src/ImagesGUI/";
-		  if (choixRaquette==1) nom_texture_raquette = "raquetteSport.jpg"; 
-		  if (choixRaquette==2) nom_texture_raquette = "banane.jpg";
-		  if (choixRaquette==3) nom_texture_raquette = "raquetteSport.jpg";
-		  if (choixRaquette==4) nom_texture_raquette = "banane.jpg";
+		 // nom_texture_raquette = "C:/Users/FATIMATA/workspace/PACT3.2/";
+		  if (choixRaquette==2) nom_texture_raquette = "raquetteSport.jpg"; 
+		  if (choixRaquette==1) nom_texture_raquette = "banane.jpg";
+		  if (choixRaquette==3) nom_texture_raquette = "requin.jpg";
 		
 	 }
 	  // Le rendu à ma fenêtre de jeu
@@ -256,10 +242,9 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 		
 		//là il doit prendre l'image du déco et le mettre dans l'ecran
 		
-	 	if (choixDeco==1) nom_texture_deco = "ocean.jpg";
-		if (choixDeco==2) nom_texture_deco = "jungle.jpg";
-		if (choixDeco==3) nom_texture_deco = "newYork.jpg";
-		if (choixDeco==4) nom_texture_deco = "pelouse.jpg";
+	 	if (choixDeco==3) nom_texture_deco = "ocean.jpg";
+		if (choixDeco==1) nom_texture_deco = "jungle.jpg";
+		if (choixDeco==2) nom_texture_deco = "newYork.jpg";
 		
 	
 	 }
@@ -286,6 +271,25 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 	 	
 	 	}
 	
+	 	public void play(){
+	 		setDisplay();
+	 		initGL();
+	 		while(isRunning){
+	 			
+				
+				render();
+				Display.update();
+			
+				if(Display.isCloseRequested()){
+					
+					isRunning=false;
+				}
+				
+			}
+			
+			Display.destroy();
+
+	 	}
 
 	
 }

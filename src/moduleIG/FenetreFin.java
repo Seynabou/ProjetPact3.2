@@ -38,7 +38,8 @@ public class FenetreFin {
 		JButton boutonRejouer = new JButton("Rejouer");
 		boutonRejouer.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				
+				pong.play();
+				close();
 			}
 		});
 		boutonRejouer.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/rejouer.jpg")));
@@ -56,11 +57,17 @@ public class FenetreFin {
 			public void mouseClicked(MouseEvent e){
 				FenetreDemarrage window = new FenetreDemarrage(manitou,pong);
 				window.show();
+				close();
 			}
 		});
 		boutonNew.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/settings.png")));
 		panneauPrinc.add(boutonNew);
 		
+	}
+	
+	public void close(){
+		fenetre.setVisible(false);
+		fenetre.dispose();
 	}
 	
 	

@@ -18,9 +18,10 @@ public class FenetreJeu {
 	private JFrame fenetre=new JFrame("Enjoy!");
 	private JPanel panneau=(JPanel) fenetre.getContentPane();
 	private Score score;
+	private Manitou manitou;
 	
 	public FenetreJeu(Manitou manitou){
-		
+		this.manitou=manitou;
 	}
 	
 	public void show(){
@@ -38,7 +39,7 @@ public class FenetreJeu {
 		pause.addMouseListener(new MouseAdapter() {
 		
 			public void mouseClicked(MouseEvent e){
-				
+				manitou.mettreEnPause_Reprendre();
 			}
 		});
 		pause.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/play.png")));
