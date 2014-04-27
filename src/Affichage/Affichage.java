@@ -228,8 +228,8 @@ public class Affichage implements SetRaquetteDecoGuiAffichage {
 			Raquette raquetteP2 = manitou.getRaquetteP2();
 			Balle balle = manitou.getBalle();
 			
-			raquette1VBO.render(raquetteP1.getX(), raquetteP1.getY(), raquetteP1.getZ());
-			raquette2VBO.render(raquetteP2.getX()+200, raquetteP2.getY(), raquetteP2.getZ());
+			raquette1VBO.render(raquetteP1.getX()-150, raquetteP1.getY(), raquetteP1.getZ());
+			raquette2VBO.render(raquetteP2.getX()+450, raquetteP2.getY(), raquetteP2.getZ());
 	  
 	        balleVBO.render(balle.getX(), balle.getY(), balle.getZ());
 			
