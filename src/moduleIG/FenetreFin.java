@@ -17,6 +17,7 @@ public class FenetreFin {
 	private  JFrame fenetre=new JFrame("Game Over");
 	private Manitou manitou;
 	private Affichage pong;
+	private ConfigData donnees;
 	private  JPanel panneauPrinc=(JPanel) this.fenetre.getContentPane();
 
 	public void show(){
@@ -26,10 +27,11 @@ public class FenetreFin {
 		this.fenetre.setVisible(true);
 
 	}
-	
-	public FenetreFin(Manitou manitou,Affichage pong){
+
+	public FenetreFin(Manitou manitou,ConfigData donnees){
 		this.manitou=manitou;
-			this.pong=pong;
+		this.donnees=donnees;
+		pong=new Affichage(manitou);
 
 	}
 
@@ -38,8 +40,11 @@ public class FenetreFin {
 		JButton boutonRejouer = new JButton("Rejouer");
 		boutonRejouer.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
+				pong.traiterDonnees(donnees);
 				pong.play();
 				close();
+				FenetreFin window = new FenetreFin(manitou,donnees);
+				window.show();
 			}
 		});
 		boutonRejouer.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/rejouer.jpg")));
@@ -47,7 +52,7 @@ public class FenetreFin {
 		JButton boutonQuitter = new JButton("Quitter");
 		boutonQuitter.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-			System.exit(0);	
+				System.exit(0);	
 			}
 		});
 		boutonQuitter.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/quitter.png")));
@@ -62,14 +67,14 @@ public class FenetreFin {
 		});
 		boutonNew.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/settings.png")));
 		panneauPrinc.add(boutonNew);
-		
+
 	}
-	
+
 	public void close(){
 		fenetre.setVisible(false);
 		fenetre.dispose();
 	}
-	
-	
+
+
 
 }

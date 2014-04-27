@@ -16,6 +16,7 @@ public class FenetreDemarrage {
 
 	private  JFrame fenetre=new JFrame("Menu Principal- MENTAL PONG");
 	private Manitou manitou;
+	private ConfigData donnees=new ConfigData();
 	private  JPanel panneauPrinc=(JPanel) this.fenetre.getContentPane();
 	private FenetreConfig configurations = new FenetreConfig(this);
 	public void show(){
@@ -42,9 +43,10 @@ public class FenetreDemarrage {
 				FenetreJeu fenetre =new FenetreJeu(manitou);
 				fenetre.show();
 				pong.play();
-				FenetreFin window = new FenetreFin(manitou,pong);
-				window.show();
 				close();
+				FenetreFin window = new FenetreFin(manitou,donnees);
+				window.show();
+				
 			}
 		});
 		jouer.setIcon(new ImageIcon(getClass().getResource("/ImagesGUI/play.png")));
@@ -71,6 +73,7 @@ public class FenetreDemarrage {
 
 	public void traiterDonnees(ConfigData donnees){
 		System.out.println(donnees.toString());
+		this.donnees=donnees;
 		manitou.traiterDonnees(donnees);
 		pong.traiterDonnees(donnees);
 		

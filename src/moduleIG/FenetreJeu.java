@@ -27,7 +27,7 @@ public class FenetreJeu {
 	public void show(){
 		this.getReady();
 		fenetre.pack();
-		fenetre.setLocationRelativeTo(null);
+		fenetre.setLocation(-50, 200);
 		fenetre.setVisible(true);
 	}
 	
