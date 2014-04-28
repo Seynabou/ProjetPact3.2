@@ -1,6 +1,6 @@
 package moduleClassif;
 
-public class test {
+public class TestWeakClassifiers {
 
 	
 	public static void main(String[] args){
@@ -13,32 +13,13 @@ public class test {
 			{-0.258109,-0.351108,-0.342917,0.489328,0.196454,-0.681423,-0.374083,-1.392900,1.125817,-0.795811,-0.908412,-0.411808,-1.362156,-1.511173,-1.038142,0.734258,0.547297,1.928656,2.569895,2.235217}
 			
 		};
-//		for(int h=0; h<matrixOfFeatures.length;h++){
-//			for(int j=0;j<=matrixOfFeatures.length;j++){
-//				System.out.println(matrixOfFeatures[h][j]);
-//			}
-//			
-//		}
+
 		double[] weight = {1.0,2.0,3.6,4.9,5.2};
 		int[] labels = {1,-1,-1,-1,1};//pcccp
 		
 		WeakClassifiers weakClassif = new WeakClassifiers(matrixOfFeatures, labels, weight);
 		weakClassif.Classifiers();
 		System.out.println("oki");
-		
-		
-		
-		
-		
-//		ClassifieurFaible classif;
-//		double[] weight = {1.0,2.0,3.0};
-//		double[][] matrixOfFeatures = {{2.3,2.6,3.8},{6.4,6.0,6.8},{1.0,6.0,5.7}};
-//		int[] labels = {1,-1,-1};
-//		classif = new ClassifieurFaible(weight, matrixOfFeatures, labels);
-//		String test = classif.getLabelshape_best();
-//		System.out.println(test);
-		
-		
-		
+				
 	}
 }

@@ -2,7 +2,7 @@ package moduleClassif;
 
 public class WeakClassifiers {
 
-	int rows =5;  
+	int rows =12;  
 	int columns = 20;
 	double[][] MatrixOfFeatures = new double[rows][columns]; 
 	int[] labels = new int[rows];
@@ -21,7 +21,7 @@ public class WeakClassifiers {
 	int labelShape;
 
 	int featureSelect;
-	double[] modelh = new double[4]; 
+	double[] modelh = new double[5]; 
 	double errorCalculated;
 
 	public WeakClassifiers(double[][] matrixOfFeatures, int[] labels, double[] weight){
@@ -34,12 +34,12 @@ public class WeakClassifiers {
 	public double[] Classifiers() { //changer le retour après pour adaboost: modelh[i]
 
 		//for each feature
-		//		for(int k =0; k<MatrixOfFeatures.length;k++){
-		//			for(int j =0; j<MatrixOfFeatures[0].length;j++){
-		//				System.out.println(k+" "+j+" ="+MatrixOfFeatures[k][j] + "/"+MatrixOfFeatures.length); 
-		//			}
-		//		}
-
+//				for(int k =0; k<MatrixOfFeatures.length;k++){
+//					for(int j =0; j<MatrixOfFeatures[0].length;j++){
+//						System.out.println(k+" "+j+" ="+MatrixOfFeatures[k][j] + "/"+MatrixOfFeatures.length); 
+//					}
+//				}
+		
 		for(int p = 0; p<MatrixOfFeatures[0].length;p++){ 
 			for(int i =0; i<MatrixOfFeatures.length; i++){
 
@@ -56,12 +56,10 @@ public class WeakClassifiers {
 
 				if(error1 < error2){
 					this.errorThreshold[i] = error1;
-					//this.tabValeur1[i]=MatrixOfFeatures[i][p];
 					this.labelShape1[i] = +1;				
 				}
 				else{
 					this.errorThreshold[i] = error2;
-					//this.tabValeur1[i]=MatrixOfFeatures[i][p];
 					this.labelShape1[i] = -1;
 				}
 			}
@@ -71,6 +69,7 @@ public class WeakClassifiers {
 
 			//select the best errorThreshold
 			errorFeatures[p]=boucleForPourErrorThreshold(p);
+			
 			tabValeur2[p]=MatrixOfFeatures[indiceThreshold][p];
 		}
 		//select the best errorFeatures
@@ -79,9 +78,9 @@ public class WeakClassifiers {
 		modelh[0] = featureSelect;
 		modelh[1] = error;
 		modelh[2] = labelShape;
-		modelh[3] = indiceThreshold; //correspond à la ligne sur la matrice sans ajout
-
-		System.out.println("feature select "+modelh[0]+" error "+modelh[1]+" labelshape "+modelh[2]+" position ligne error "+modelh[3]+" " + tabValeur2[indiceThreshold]);
+		modelh[3] = tabValeur2[indiceThreshold]; //correspond à la valeur du threshold choisi
+		modelh[4] = indiceThreshold;
+		//System.out.println("feature select "+modelh[0]+" error "+modelh[1]+" labelshape "+modelh[2]+" valeur du seuil "+ tabValeur2[indiceThreshold]);
 
 //				for(int i=0; i<tabValeur2.length;i++){
 //					System.out.println(tabValeur2[i]);
@@ -89,7 +88,7 @@ public class WeakClassifiers {
 //				for(int i=0; i<errorFeatures.length;i++){
 //					System.out.println(errorFeatures[i]);
 //				}
-				
+//				
 		return modelh;
 	}
 
