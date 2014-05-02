@@ -73,7 +73,7 @@ public class Projection {
 		double[][] MatrixOfVectorOfFeatures = new double[tableauMatrice[0]
 				.getRowDimension()][tableauMatrice.length];
 
-		Projection[] descripteur = new Projection[k];
+		Projection[] descripteur = new Projection[tableauMatrice.length];
 
 		for (int i = 0; i < tableauMatrice.length; i++) {
 			descripteur[i] = new Projection(tableauMatrice[i]);
